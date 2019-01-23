@@ -20,6 +20,7 @@ a:focus {
 p {
     font-size: 16px;
     line-height: 1.5;
+
 }
 
 header {
@@ -93,7 +94,35 @@ header .header-content .header-content-inner p {
     margin-top: 0;
     margin-bottom: 20px;
 }
+.post{
+  padding:20px;
+  border-style: solid;
+  box-shadow: -1px -1px 10px rgba(200,200,200,1) ;
+  border-color:rgb(224, 224, 224);
+  border-width: 0px 240px 0px 0px;
+}
 
+.username {
+  margin-top: 10px;
+  color:rgb(59, 70, 71);
+  font-size:33px;
+
+}
+.category {
+  text-align:right;
+  margin-top: 10px;
+  color: rgb(206, 219, 179);
+  font-size:33px;
+}
+
+.upvote{
+  opacity:0.23;
+}
+
+.upvote:hover{
+  opacity:0.7;
+  cursor:pointer;
+}
 .intro {
 	color: #fff;
     background-color: yellowgreen;
