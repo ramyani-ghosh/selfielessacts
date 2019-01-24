@@ -113,44 +113,78 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-11" style="margin-left:20px;">
-                	<h2 class="section-header">Food for all</h2>
-                	<p class="lead text-muted">Amira Food were proud to sponsor the Sparkle Ball, held on 18th September 2014 at the Four Seasons Hotel, London in aid of the Akshaya Patra Foundation, a charity which provides free lunches for 1.4 million Indian school children everyday.</p>
+              	<div class="col-sm-8"><h2 class="section-header">Food for all</h2></div>
+                <div class="col-sm-4 noOfVotes" style="padding-top:2%;font-size:25px;color:rgb(180,180,180)">0 votes</div>
+            </div>
+            <div class="row">
+                	<p class="lead text-muted" style="padding-left:2%">Amira Food were proud to sponsor the Sparkle Ball, held on 18th September 2014 at the Four Seasons Hotel, London in aid of the Akshaya Patra Foundation, a charity which provides free lunches for 1.4 million Indian school children everyday.</p>
 
-                </div>
             </div>
 
         </div>
     </section>
 
+    	<!-- post 2 -->
+        <section class="content ">
+            <div class="container post">
+                <div class="row">
+                  <img class="col-sm-1" src="images/usericon.png" style="padding:10px;width:7%;" alt="">
+                  <a href="#" class="username col-sm-4">@amira_food</a>
+                  <a href="#" class="category col-sm-5">SOCIETY</a>
+                </div>
+                <div class="row"><p style="color:rgba(200,200,200,0)">blank line hhaa</p></div>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <img class="img-responsive center-block" src="images/charityfood.jpg" alt="">
+                    </div>
+                    <div class="col-sm-2 upvote">
+                        <img class="img-responsive center-block"  src="images/upvote-psd.png" style="margin-left:210px;width:100px" alt="">
+                    </div>
+                </div>
+                <div class="row">
+                  	<div class="col-sm-8"><h2 class="section-header">Food for all</h2></div>
+                    <div class="col-sm-4 noOfVotes" style="padding-top:2%;font-size:25px;color:rgb(180,180,180)">0 votes</div>
+                </div>
+                <div class="row">
+                    	<p class="lead text-muted" style="padding-left:2%">Amira Food were proud to sponsor the Sparkle Ball, held on 18th September 2014 at the Four Seasons Hotel, London in aid of the Akshaya Patra Foundation, a charity which provides free lunches for 1.4 million Indian school children everyday.</p>
 
-	<!-- Content 2 -->
-  <section class="content ">
-      <div class="container post">
-          <div class="row">
-            <img class="col-sm-1" src="images/usericon.png" style="padding:10px;width:7%;" alt="">
-            <a href="#" class="username col-sm-4">@amira_food</a>
-            <a href="#" class="category col-sm-5">SOCIETY</a>
-          </div>
-          <div class="row"><p style="color:rgba(200,200,200,0)">blank line hhaa</p></div>
-          <div class="row">
-              <div class="col-sm-10">
-                  <img class="img-responsive center-block" src="images/charityfood.jpg" alt="">
-              </div>
-              <div class="col-sm-2 upvote">
-                  <img class="img-responsive center-block"  src="images/upvote-psd.png" style="margin-left:210px;width:100px" alt="">
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-sm-11" style="margin-left:20px;">
-                <h2 class="section-header">Food for all</h2>
-                <p class="lead text-muted">Amira Food were proud to sponsor the Sparkle Ball, held on 18th September 2014 at the Four Seasons Hotel, London in aid of the Akshaya Patra Foundation, a charity which provides free lunches for 1.4 million Indian school children everyday.</p>
+                </div>
 
-              </div>
-          </div>
+            </div>
+        </section>
 
-      </div>
-  </section>
+
+        	<!-- post 3 -->
+            <section class="content ">
+                <div class="container post">
+                    <div class="row">
+                      <img class="col-sm-1" src="images/usericon.png" style="padding:10px;width:7%;" alt="">
+                      <a href="#" class="username col-sm-4">@amira_food</a>
+                      <a href="#" class="category col-sm-5">SOCIETY</a>
+                    </div>
+                    <div class="row"><p style="color:rgba(200,200,200,0)">blank line hhaa</p></div>
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <img class="img-responsive center-block" src="images/charityfood.jpg" alt="">
+                        </div>
+                        <div class="col-sm-2 upvote">
+                            <img class="img-responsive center-block"  src="images/upvote-psd.png" style="margin-left:210px;width:100px" alt="">
+                        </div>
+                    </div>
+                    <div class="row">
+                      	<div class="col-sm-8"><h2 class="section-header">Food for all</h2></div>
+                        <div class="col-sm-4 noOfVotes" style="padding-top:2%;font-size:25px;color:rgb(180,180,180)">0 votes</div>
+                    </div>
+                    <div class="row">
+                        	<p class="lead text-muted" style="padding-left:2%">Amira Food were proud to sponsor the Sparkle Ball, held on 18th September 2014 at the Four Seasons Hotel, London in aid of the Akshaya Patra Foundation, a charity which provides free lunches for 1.4 million Indian school children everyday.</p>
+
+                    </div>
+
+                </div>
+            </section>
+
+
+
 
     <!-- Promos -->
 	<div class="container-fluid">
@@ -226,3 +260,15 @@
 </body>
 
 </html>
+
+
+<script>
+  $(".upvote").click(function(){
+      console.log($(this).parent().next());
+      var val = $(this).parent().next().find(".noOfVotes").text();
+      var votes = parseInt(val);
+      console.log(votes);
+      votes++;
+      $(this).parent().next().find(".noOfVotes").text(votes+" votes");
+  });
+</script>
