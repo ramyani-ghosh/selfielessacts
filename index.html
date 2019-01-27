@@ -14,12 +14,7 @@
     <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
     <link href="css/custom.css" rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
 
     <!-- Custom Fonts from Google -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -50,9 +45,6 @@
                     <li class="active">
                         <a href="#">Home</a>
                     </li>
-                    <li>
-                        <a href="#">My Posts</a>
-                    </li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
 						<ul class="dropdown-menu" aria-labelledby="about-us">
@@ -63,7 +55,7 @@
 						</ul>
 					</li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="signin.html">Sign In</a>
                     </li>
                 </ul>
 
@@ -95,6 +87,34 @@
         </div>
     </section>
 
+    <!-- Promos -->
+  <div class="container-fluid">
+        <div class="row promo">
+          <a href="#">
+        <div class="col-md-4 promo-item item-1">
+          <h3>
+            Society
+          </h3>
+        </div>
+            </a>
+            <a href="#">
+        <div class="col-md-4 promo-item item-2">
+          <h3>
+            Environment
+          </h3>
+        </div>
+            </a>
+
+      <a href="#">
+        <div class="col-md-4 promo-item item-3">
+          <h3>
+            Personal
+          </h3>
+        </div>
+            </a>
+        </div>
+    </div><!-- /.container-fluid -->
+
 	<!-- post 1 -->
     <section class="content ">
         <div class="container post">
@@ -124,34 +144,36 @@
         </div>
     </section>
 
-    	<!-- post 2 -->
-        <section class="content ">
-            <div class="container post">
-                <div class="row">
-                  <img class="col-sm-1" src="images/usericon.png" style="padding:10px;width:7%;" alt="">
-                  <a href="#" class="username col-sm-4">@thenationalarmy</a>
-                  <a href="#" class="category col-sm-5">SOCIETY</a>
-                </div>
-                <div class="row"><p style="color:rgba(200,200,200,0)">blank line hhaa</p></div>
-                <div class="row">
-                    <div class="col-sm-10">
-                        <img class="img-responsive center-block" src="images/soldier.jpg" alt="">
-                    </div>
-                    <div class="col-sm-2 upvote">
-                        <img class="img-responsive center-block"  src="images/upvote-psd.png" style="margin-left:210px;width:100px" alt="">
-                    </div>
-                </div>
-                <div class="row">
-                  	<div class="col-sm-8"><h2 class="section-header">Saviours in Action</h2></div>
-                    <div class="col-sm-4 noOfVotes" style="padding-top:2%;font-size:25px;color:rgb(180,180,180);width:100%">0 votes</div>
-                </div>
-                <div class="row">
-                    	<p class="lead text-muted" style="padding-left:2%">India's border force boasts of extremely commited and selfless soldiers who risk everything for the country and its people. Here we see a soldier rescuing a kid who was caught in a feud at the border.</p>
+        <!-- post 2 -->
+          <section class="content ">
+              <div class="container post">
+                  <div class="row">
+                    <img class="col-sm-1" src="images/usericon.png" style="padding:10px;width:7%;" alt="">
+                    <a href="#" class="username col-sm-4">@thenationalarmy</a>
+                    <a href="#" class="category col-sm-5">SOCIETY</a>
+                  </div>
+                  <div class="row"><p style="color:rgba(200,200,200,0)">blank line hhaa</p></div>
+                  <div class="row">
+                      <div class="col-sm-10">
+                          <img class="img-responsive center-block" src="images/soldier.jpg" alt="">
+                      </div>
+                      <div class="col-sm-2 upvote">
+                          <img class="img-responsive center-block"  src="images/upvote-psd.png" style="margin-left:210px;width:100px" alt="">
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-sm-8"><h2 class="section-header">Saviours in Action</h2></div>
+                      <div class="col-sm-4 noOfVotes" style="padding-top:2%;font-size:25px;color:rgb(180,180,180)">0 votes</div>
+                  </div>
+                  <div class="row">
+                        <p class="lead text-muted" style="padding-left:2%">India's border force boasts of extremely commited and selfless soldiers who risk everything for the country and its people. Here we see a soldier rescuing a kid who was caught in a feud at the border.</p>
 
-                </div>
+                  </div>
 
-            </div>
-        </section>
+              </div>
+          </section>
+
+
 
 
         	<!-- post 3 -->
@@ -217,7 +239,7 @@
                     <div class="container post">
                         <div class="row">
                           <img class="col-sm-1" src="images/usericon.png" style="padding:10px;width:7%;" alt="">
-                          <a href="#" class="username col-sm-4">@jack_kipster</a>
+                          <a href="#" class="username col-sm-4">@jack_kipsterS</a>
                           <a href="#" class="category col-sm-5">PERSONAL</a>
                         </div>
                         <div class="row"><p style="color:rgba(200,200,200,0)">blank line hhaa</p></div>
@@ -241,42 +263,10 @@
                     </div>
                 </section>
 
-    <!-- Promos -->
-	<div class="container-fluid">
-        <div class="row promo">
-        	<a href="#">
-				<div class="col-md-4 promo-item item-1">
-					<h3>
-						Society
-					</h3>
-				</div>
-            </a>
-            <a href="#">
-				<div class="col-md-4 promo-item item-2">
-					<h3>
-						Environment
-					</h3>
-				</div>
-            </a>
-
-			<a href="#">
-				<div class="col-md-4 promo-item item-3">
-					<h3>
-						Personal
-					</h3>
-				</div>
-            </a>
-        </div>
-    </div><!-- /.container-fluid -->
 
 	<!-- Content 3 -->
      <section class="content content-3">
-        <div class="container">
-			<h2 class="section-header"><span class="glyphicon glyphicon-pushpin text-primary"></span><br> Sanity Check</h2>
-			<p class="lead text-muted">Holisticly predominate extensible testing procedures for reliable supply chains. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>
-                    <a href="#" class="btn btn-primary btn-lg">Check Now</a>
-            </div>
-        </div>
+        
     </section>
 
 	<!-- Footer -->
@@ -287,7 +277,7 @@
         	<div class="container">
 				<h2 class="section-heading">Contact Us</h2>
 				<p><span class="glyphicon glyphicon-earphone"></span><br> +1(23) 456 7890</p>
-				<p><span class="glyphicon glyphicon-envelope"></span><br> info@example.com</p>
+				<p><span class="glyphicon glyphicon-envelope"></span><br> cc_developer@gmail.com</p>
         	</div>
         </div>
 
