@@ -115,6 +115,12 @@ header .header-content .header-content-inner p {
   font-size:33px;
 }
 
+.uploadbutton {
+    position: fixed;
+    bottom:0;
+    right: 3%;
+    z-index: 2;
+}
 .upvote{
 
   margin-top:22%;
