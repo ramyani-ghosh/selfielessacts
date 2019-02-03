@@ -5,7 +5,8 @@ const ActSchema = mongoose.Schema({
   category:String,
   caption:String,
   timestamp:String,
-  imgUrl:String
+  imgUrl:String,
+  upVotes:Number
 });
 
 module.exports = mongoose.model('Act', ActSchema);
