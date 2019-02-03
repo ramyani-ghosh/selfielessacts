@@ -1,7 +1,6 @@
 {
   "name": "selfielessacts",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,5 +11,9 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mongoose": "^5.4.8"
-  }
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  },
+  "description": ""
 }
