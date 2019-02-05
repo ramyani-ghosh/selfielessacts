@@ -1,17 +1,17 @@
 module.exports = (app) => {
     const acts = require('../controllers/note.controller.js');
-    // List all categories
-    app.all('/api/v1/categories',acts.listAllCat);
+    // List all categories and add cat
+    app.all('/api/v1/categories',acts.commonCat);
     // Add a cat
-    app.all('/api/v1/categories',acts.addCat);
+    // app.all('/api/v1/categories',acts.addCat);
     // Remove a cat
     // app.delete('/api/category/remove',acts.removeCat);
     // List acts for a given Category 
-    app.all('/api/v1/categories/:categoryName/acts',acts.listCatAct);
+    app.all('/api/v1/categories/:categoryName/acts',acts.listCat);
     // List number of acts for a given category
-    app.all('/api/v1/categories/:categoryName/acts/size',acts.listCatActCount);
+    app.all('/api/v1/categories/:categoryName/acts/size',acts.listCatCount);
     // List Acts for a given category in given range
-    app.all('/api/v1/categories/{categoryName}/acts',acts.getCountInRange);
+    app.all('/api/v1/categories/:categoryName/acts',acts.getCountInRange);
     // Upvote an act
     app.all('/api/v1/acts/upvote',acts.upvoteAct);
     // Remove an act
