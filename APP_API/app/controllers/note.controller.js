@@ -1,20 +1,54 @@
-const Act = require('../models/note.model.js');
+const schemas = require('../models/note.model.js');
+const Act = schemas.Act;
+const Category = schemas.Category;
 
 // List all categories
 exports.listAllCat = (req, res) => {
-    Act.distinct("category").then(categories =>{
-        res.send(categories);
-    }).catch(err => {
+    categoryList = Category.find({})
+    .then(data=>{
+        console.log(data);
+        var newjson = {};
+        var count = 0;
+        for(var item in data){
+            newjson[data[item].categoryName] = data[item].count;
+            count++;
+        }
+        if(count)
+            res.status(200).send(newjson);
+        else
+            res.status(204).send(newjson);
+    }).catch(err=>{
         
-        res.status(204).send({});
-        res.status(205).send({});
-        res.status(500).send({
-            message: err.message || "Some error occurred while retrieving notes."
+    });
+    //405??
+};
+
+//Insert Category
+exports.addCat = (req,res) => {
+     if(req.body.length != 1) {
+        return res.status(400).send({
+            message: "Act content can not be empty"
+        });
+    }
+
+    console.log(req.body);
+    // Create a new Act
+    const cat = new Category({
+        categoryName : req.body[0],
+        count : 0,
+    });
+    cat.save().then(data => {
+        res.status(201).send({
+            //Act Created Successfully!
+        });
+    }).catch(err => {
+        res.status(405).send({
+            // message: "ActId provided is not unique!"
         });
     });
 };
-
 // List acts for a given category
+// fix request format
 exports.listCatAct = (req,res) => {
     if(!req.body) {
         return res.status(400).send({
@@ -31,6 +65,7 @@ exports.listCatAct = (req,res) => {
 };
 
 // List Number of acts for a given category
+//fix request format
 exports.listCatActCount = (req,res) => {
     console.log("In the function!");
      if(!req.body) {
@@ -38,13 +73,14 @@ exports.listCatActCount = (req,res) => {
             message: "Category Name can not be empty"
         });
     }
-    console.log(req.body.catName);
-    Act.find({category:req.body.catName}).then(data => {
-        res.send({"count":data.length});
+    console.log(req.body);
+    Act.find({category:req.body[0]}).then(data => {
+        res.send([data.length]);
     });
 };
 
 //List count of Acts for a given Category for a given range
+// fix query
 exports.getCountInRange = (req,res) => {
     if(!req.body) {
         return res.status(400).send({
@@ -67,6 +103,7 @@ exports.getCountInRange = (req,res) => {
 };
 
 //Upvote an Act
+// error codes
 exports.upvoteAct = (req,res) => {
     if(!req.body) {
         return res.status(400).send({
@@ -83,20 +120,8 @@ exports.upvoteAct = (req,res) => {
     });
 };
 
-
-// Retrieve and return all notes from the database.
-exports.findAll = (req, res) => {
-    Act.find()
-    .then(acts => {
-        res.send(acts);
-    }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while retrieving notes."
-        });
-    });
-};
-
 //Remove an Act
+// error codes
 exports.removeAct = (req,res) => {
     if(!req.body) {
         return res.status(400).send({
@@ -114,6 +139,7 @@ exports.removeAct = (req,res) => {
     });
 };
 // Upload a new act
+// url needs to be done
 exports.uploadAct = (req,res) => {
     //Error Handling - 400
     if(!req.body) {
@@ -121,6 +147,8 @@ exports.uploadAct = (req,res) => {
             message: "Act content can not be empty"
         });
     }
+
+    console.log(req.body);
     // Create a new Act
     const act = new Act({
         actId: req.body.actId,
@@ -146,6 +174,19 @@ exports.uploadAct = (req,res) => {
         });
         res.status(500).send({
             message: err.message || "Some error occurred while creating the Act."
+        });
+    });
+};
+
+
+// Retrieve and return all notes from the database.
+exports.findAll = (req, res) => {
+    Act.find()
+    .then(acts => {
+        res.send(acts);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving notes."
         });
     });
 };

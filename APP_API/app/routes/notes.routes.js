@@ -1,9 +1,10 @@
+
 module.exports = (app) => {
     const acts = require('../controllers/note.controller.js');
     // List all categories
     app.get('/api/category/list',acts.listAllCat);
     // Add a cat
-    // app.post('/api/category/add',acts.addCat);
+    app.post('/api/category/add',acts.addCat);
     // Remove a cat
     // app.delete('/api/category/remove',acts.removeCat);
     // List acts for a given Category 

@@ -8,5 +8,14 @@ const ActSchema = mongoose.Schema({
   imgUrl:String,
   upVotes:Number
 });
+const CategorySchema = mongoose.Schema({
+	categoryName:{ type:String, index:{unique:true}},
+	count:Number
+});
+module.exports = {
+	Act : mongoose.model('Act', ActSchema),
+	Category : mongoose.model('Category', CategorySchema)
+};
 
-module.exports = mongoose.model('Act', ActSchema);
+
+
