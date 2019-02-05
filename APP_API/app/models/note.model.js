@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const ActSchema = mongoose.Schema({
-  actId:Number,
+  actId:{ type:Number, index:{unique:true}},
   category:String,
   caption:String,
   timestamp:String,

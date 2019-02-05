@@ -5,6 +5,9 @@ exports.listAllCat = (req, res) => {
     Act.distinct("category").then(categories =>{
         res.send(categories);
     }).catch(err => {
+        
+        res.status(204).send({});
+        res.status(205).send({});
         res.status(500).send({
             message: err.message || "Some error occurred while retrieving notes."
         });
@@ -29,18 +32,15 @@ exports.listCatAct = (req,res) => {
 
 // List Number of acts for a given category
 exports.listCatActCount = (req,res) => {
+    console.log("In the function!");
      if(!req.body) {
         return res.status(400).send({
             message: "Category Name can not be empty"
         });
     }
-    console.log(Act.count({category:req.body.catName}));
-    Act.count({category:req.body.catName}).then(count => {
-        res.send(count);
-    }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while retrieving notes."
-        });
+    console.log(req.body.catName);
+    Act.find({category:req.body.catName}).then(data => {
+        res.send({"count":data.length});
     });
 };
 
@@ -51,6 +51,12 @@ exports.getCountInRange = (req,res) => {
             message: "Category Name can not be empty"
         });
     }
+    console.log(req.body.start);
+    Act.count( { actId: { $gt: req.body.start, $lt: req.body.end }}).then(data => {
+        res.send(data.length).catch(err => {
+        // res.status(400).send({});
+        });
+    });
     // Act.find($query:{category:req.body.category},$orderby:{_id:-1}).skip(req.body.start).limit(req.body.end - req.body.start).then(count => {
     //     res.send(count);
     // }).catch(err => {
@@ -77,15 +83,6 @@ exports.upvoteAct = (req,res) => {
     });
 };
 
-//Remove an Act
-exports.removeAct = (req,res) => {
-   if(!req.body) {
-        return res.status(400).send({
-            message: "Category Name can not be empty"
-        });
-    }
-    // Act.remove
-};
 
 // Retrieve and return all notes from the database.
 exports.findAll = (req, res) => {
@@ -99,19 +96,31 @@ exports.findAll = (req, res) => {
     });
 };
 
-
+//Remove an Act
+exports.removeAct = (req,res) => {
+    if(!req.body) {
+        return res.status(400).send({
+            message: "Category Name can not be empty"
+        });
+    }
+    console.log(req.body.actId);
+    
+    Act.findOneAndDelete({actId:req.body.actId},function(err,callback){
+        if(callback)
+            res.status(200).send({});
+        else
+            res.status(400).send({});
+        
+    });
+};
 // Upload a new act
 exports.uploadAct = (req,res) => {
-
-    console.log("Api Called!");
-    console.log(req.body);
     //Error Handling - 400
     if(!req.body) {
         return res.status(400).send({
             message: "Act content can not be empty"
         });
     }
-    console.log("Response not Empty!");
     // Create a new Act
     const act = new Act({
         actId: req.body.actId,
@@ -121,12 +130,20 @@ exports.uploadAct = (req,res) => {
         imgUrl:req.body.imgUrl,
         upVotes:0
     });
-
+    const success = {};
     // Save Act in the database
     act.save()
     .then(data => {
-        res.send(data);
+        res.status(201).send({
+            //Act Created Successfully!
+        });
     }).catch(err => {
+        res.status(400).send({
+            // message: "ActId provided is not unique!"
+        });
+        res.status(405).send({
+            // message: "Bad Request!"
+        });
         res.status(500).send({
             message: err.message || "Some error occurred while creating the Act."
         });
