@@ -1,6 +1,62 @@
 const schemas = require('../models/note.model.js');
 const Act = schemas.Act;
 const Category = schemas.Category;
+const User = schemas.User;
+
+exports.addUser = (req,res) => {
+    if(req.method=='POST'){
+      if(!req.body) {
+          return res.status(400).send({
+              message: "Empty JSON"
+          });
+      }
+      console.log(req.body);
+      const user = new User({
+        username:req.body.username,
+        password:req.body.password
+      });
+
+      if(!user.password.match("^[a-fA-F0-9]{40}$")){
+        return res.status(400).send({});
+      }
+
+      user.save().then(data => {
+          res.status(201).send({
+              //Act Created Successfully!
+          });
+      }).catch(err => {
+          res.status(400).send({
+              // message: "ActId provided is not unique!"
+          });
+      });
+
+    }
+    else{
+      res.status(405).send({});
+    }
+};
+
+exports.removeUser = (req,res) => {
+  if(req.method=="DELETE"){
+    if(!req.body) {
+        return res.status(400).send({
+            message: "Empty JSON"
+        });
+    }
+
+    console.log(req.params.username);
+    User.findOneAndDelete({username:req.params.username},function(err,callback){
+        if(callback)
+            res.status(200).send({});
+        else
+            res.status(400).send({});
+
+    });
+  }
+  else{
+    res.status(405).send({});
+  }
+};
 
 // List all categories
 exports.listAllCat = (req, res) => {
@@ -20,7 +76,7 @@ exports.listAllCat = (req, res) => {
             else
                 res.status(204).send(newjson);
         }).catch(err=>{
-            
+
         });
     }else{
         res.status(405).send();
@@ -51,7 +107,8 @@ exports.addCat = (req,res) => {
                 // message: "ActId provided is not unique!"
             });
         });
-    }else{
+    }
+    else{
         res.status(405).send();
     }
 };
@@ -145,7 +202,7 @@ exports.upvoteAct = (req,res) => {
 };
 
 //Remove an Act
-// error codes
+//error codes
 exports.removeAct = (req,res) => {
     if(req.method=='DELETE'){
         if(!req.body) {
@@ -154,13 +211,13 @@ exports.removeAct = (req,res) => {
             });
         }
         console.log(req.body.actId);
-        
+
         Act.findOneAndDelete({actId:req.body.actId},function(err,callback){
             if(callback)
                 res.status(200).send({});
             else
                 res.status(400).send({});
-            
+
         });
     }else{
         res.status(405).send();
@@ -176,7 +233,7 @@ exports.uploadAct = (req,res) => {
                 message: "Act content can not be empty"
             });
         }
-    
+
         console.log(req.body);
         // Create a new Act
         const act = new Act({

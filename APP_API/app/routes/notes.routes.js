@@ -1,12 +1,16 @@
 module.exports = (app) => {
     const acts = require('../controllers/note.controller.js');
+    //Add a user
+    app.post('/api/v1/users',acts.addUser);
+    //Remove a user
+    app.delete('/api/v1/users/:username',acts.removeUser);
     // List all categories
-    app.all('/api/category/list',acts.listAllCat);
+    app.get('/api/category/list',acts.listAllCat);
     // Add a cat
     app.post('/api/category/add',acts.addCat);
     // Remove a cat
     // app.delete('/api/category/remove',acts.removeCat);
-    // List acts for a given Category 
+    // List acts for a given Category
     app.get('/api/act/list',acts.listCatAct);
     // List number of acts for a given category
     app.get('/api/category/size',acts.listCatActCount);
@@ -20,4 +24,4 @@ module.exports = (app) => {
     app.post('/api/act/upload', acts.uploadAct);
     // Retrieve all Notes
     app.get('/notes', acts.findAll);
-}
+};
