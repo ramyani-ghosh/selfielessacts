@@ -211,7 +211,7 @@ exports.upvoteAct = (req,res) => {
         // db.trialdb.update({$set:{upvotes:0}})
         // db.trialdb.update({},{$set:{upvotes:0}},false,true)
         // db.trialdb.update({actId:2},{$inc:{upvotes:1}})
-        Act.update({actId:req.body.actId},{$inc:{upVotes:1}}).then(response => res.send(response)).catch(err => {
+        Act.update({actId:req.body[0]},{$inc:{upVotes:1}}).then(response => res.send(response)).catch(err => {
             res.status(500).send({
                 message: err.message || "Some error occurred while retrieving notes."
             });
@@ -257,7 +257,7 @@ exports.uploadAct = (req,res) => {
             });
         }
 
-        console.log(req.body);
+        // console.log(req.body);
         // Create a new Act
         const act = new Act({
             actId: req.body.actId,
@@ -270,35 +270,33 @@ exports.uploadAct = (req,res) => {
         });
         const success = {};
         // Save Act in the database
-
-        Category.find({categoryName:act.categoryName}).then(data => {
-            if(data.length==0){
+        console.log(act.category);
+        Category.updateOne({categoryName:act.category},{$inc:{count:1}}).then(response => {
+            if(response['n'] == 0){
                 res.status(400).send({
-                    //message: "category doesn't exist"
+                    message: "category doesn't exist"
                 });
             }
         });
         User.find({username:act.username}).then(data => {
-            if(data.length==0){
+            if(data.length == 0){
                 res.status(400).send({
-                    //message: "username doesn't exist"
+                    message: "username doesn't exist"
                 });
             }
         });
         if(!isBase64(act.imgB64)){
             res.status(400).send({
-                    //message: "invalid b64 string"
+                    message: "invalid b64 string"
                 });
         }
-
-        act.save()
-        .then(data => {
+        act.save().then(data => {
             res.status(201).send({
                 //Act Created Successfully!
             });
         }).catch(err => {
             res.status(400).send({
-                // message: "ActId provided is not unique!"
+                message: "ActId provided is not unique!"
             });
             res.status(405).send({
                 // message: "Bad Request!"
