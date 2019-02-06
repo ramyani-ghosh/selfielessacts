@@ -115,14 +115,16 @@ exports.removeCat = (req,res) => {
             });
         }
 		var categ = req.params.categoryName;
-		Category.findOneAndDelete({category:categ},function(err,callback){
+		Category.findOneAndDelete({categoryName:categ},function(err,callback){
             if(callback){
 				Act.deleteMany({category:categ},function(err,callback){
 					res.status(200).send({});
 				});
 			}
             else
-                res.status(400).send({});
+                res.status(400).send({
+                    message:"DB ERROR"
+                });
         });
 	}
 	else{
