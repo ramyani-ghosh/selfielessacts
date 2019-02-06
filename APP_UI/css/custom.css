@@ -99,7 +99,7 @@ header .header-content .header-content-inner p {
   border-style: solid;
   box-shadow: -1px -1px 10px rgba(200,200,200,1) ;
   border-color:rgb(224, 224, 224);
-  border-width: 0px 240px 0px 0px;
+  border-width: 0px 0px 0px 0px;
 }
 
 .username {
@@ -110,17 +110,35 @@ header .header-content .header-content-inner p {
 }
 .category {
   text-align:right;
-  margin-top: 10px;
+  margin-top: 2%;
   color: rgb(206, 219, 179);
-  font-size:33px;
+  font-size:200%;
+}
+
+.removePost{
+
+  left:14%;
+  font-family:sans-serif ;
+  font-size: 200%;
+  color: rgb(170,197,180);
+  cursor: pointer;
+  z-index: 100;
 }
 
 .uploadbutton {
     position: fixed;
-    bottom:0;
-    right: 3%;
+    bottom:0%;
+    right: -40%;
     z-index: 2;
 }
+.uploadbutton:hover{
+
+  cursor:pointer;
+}
+
+
+
+
 .upvote{
 
   margin-top:22%;

@@ -1,0 +1,94 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+}
+
+h1{
+  margin-top: 5%;
+
+  margin-bottom: 4%;
+  z-index:300;
+}
+.category {
+  text-align:right;
+  margin-top: 10px;
+  color: rgb(206, 219, 179);
+  font-size:33px;
+  margin:5%;
+  font-size: 120%;
+  width:5%;
+}
+
+.uploadbutton {
+    position: fixed;
+    bottom:0%;
+    right: -40%;
+    z-index: 2;
+}
+.uploadbutton:hover{
+
+  cursor:pointer;
+}
+
+
+.form-popup {
+;
+
+  max-width:800%;
+  /*border: 3px solid #f1f1f1;*/
+  z-index: 30;
+
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 800%;
+  padding: 10%;
+  padding-top: 0%;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password],.form-container select {
+  width: 60%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+.form-container select{
+  color: rgb(60,90,80);
+  margin-left: 2%;
+  width:20%;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.form-container .newcategory{
+  margin-left: 4%;
+  cursor: pointer;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  margin-top: 5%;
+  background-color: #9acd32;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: rgb(200,100,100);
+}
