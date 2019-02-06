@@ -223,7 +223,6 @@ exports.getCountInRange = (req,res) => {
 };
 
 //Upvote an Act
-// error codes
 exports.upvoteAct = (req,res) => {
     if(req.method=='POST'){
         if(!req.body) {
@@ -231,9 +230,10 @@ exports.upvoteAct = (req,res) => {
                 message: "Category Name can not be empty"
             });
         }
-        // db.trialdb.update({$set:{upvotes:0}})
-        // db.trialdb.update({},{$set:{upvotes:0}},false,true)
-        // db.trialdb.update({actId:2},{$inc:{upvotes:1}})
+        Act.find({actId:req.body[0]}).then(data => {
+            if(data.length == 0)
+                res.status(400).send();
+        })
         Act.update({actId:req.body[0]},{$inc:{upVotes:1}}).then(response => res.send(response)).catch(err => {
             res.status(500).send({
                 message: err.message || "Some error occurred while retrieving notes."
@@ -246,7 +246,6 @@ exports.upvoteAct = (req,res) => {
 };
 
 //Remove an Act
-//error codes
 exports.removeAct = (req,res) => {
     if(req.method=='DELETE'){
         if(!req.body) {
@@ -254,9 +253,9 @@ exports.removeAct = (req,res) => {
                 message: "Category Name can not be empty"
             });
         }
-        console.log(req.body.actId);
+        console.log(req.params.actId);
 
-        Act.findOneAndDelete({actId:req.body.actId},function(err,callback){
+        Act.findOneAndDelete({actId:req.params.actId},function(err,callback){
             if(callback){
                 res.status(200).send({});
             }
