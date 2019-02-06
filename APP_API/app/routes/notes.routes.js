@@ -7,8 +7,6 @@ module.exports = (app) => {
     app.all('/api/v1/users/:username',acts.removeUser);
     // List all categories and add cat
     app.all('/api/v1/categories',acts.commonCat);
-    // Add a cat
-    // app.all('/api/v1/categories',acts.addCat);
     // Remove a cat
     app.all('/api/v1/categories/:categoryName',acts.removeCat);
     // List acts for a given Category
