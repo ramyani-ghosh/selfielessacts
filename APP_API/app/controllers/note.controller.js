@@ -58,8 +58,8 @@ exports.removeUser = (req,res) => {
   }
 };
 
-// List all categories
-exports.listAllCat = (req, res) => {
+// List all categories or insert category
+exports.commonCat = (req, res) => {
     if(req.method=='GET'){
         console.log(req.method=='GET');
         categoryList = Category.find({})
@@ -78,14 +78,7 @@ exports.listAllCat = (req, res) => {
         }).catch(err=>{
 
         });
-    }else{
-        res.status(405).send();
-    }
-};
-
-//Insert Category
-exports.addCat = (req,res) => {
-    if(req.method=='POST'){
+    }else if(req.method=='POST'){
          if(req.body.length != 1) {
             return res.status(400).send({
                 message: "Act content can not be empty"
@@ -112,15 +105,35 @@ exports.addCat = (req,res) => {
         res.status(405).send();
     }
 };
+
 // List acts for a given category
 // fix request format
-exports.listCatAct = (req,res) => {
+exports.listCat = (req,res) => {
     if(req.method=='GET'){
-        if(!req.body) {
-            return res.status(400).send({
-                message: "Category Name can not be empty"
-            });
-        }
+        Category.find({categoryName:req.params.categoryName}).then(data => {
+            console.log(data);
+            if(data.length){
+                if(data[0].count>500){
+                    res.status(413).send();
+                }else if(data[0].count==0){
+                    res.status(204).send();
+                }else{
+                    Act.find({category:req.params.categoryName}).sort({_id:-1}).then(acts => {
+                        res.status(200).send(acts);
+                    }).catch(err => {
+                        res.status(500).send({
+                            message: err.message || "Some error occurred while retrieving notes."
+                        });
+                    });
+                }
+            }else{
+                res.status(204).send();
+            }
+        });
+    }else{
+        res.status(405).send();
+    }
+    if(req.method=='GET'){
         Act.find({category:req.body.catName}).sort({_id:-1}).limit(500).then(acts => {
             res.send(acts);
         }).catch(err => {
@@ -135,17 +148,15 @@ exports.listCatAct = (req,res) => {
 
 // List Number of acts for a given category
 //fix request format
-exports.listCatActCount = (req,res) => {
+exports.listCatCount = (req,res) => {
     if(req.method=='GET'){
-        console.log("In the function!");
-         if(!req.body) {
-            return res.status(400).send({
-                message: "Category Name can not be empty"
-            });
-        }
-        console.log(req.body);
-        Act.find({category:req.body[0]}).then(data => {
-            res.send([data.length]);
+        Category.find({categoryName:req.params.categoryName}).then(data => {
+            console.log(data);
+            if(data.length){
+                res.status(200).send([data[0].count]);
+            }else{
+                res.status(204).send();
+            }
         });
     }else{
         res.status(405).send();

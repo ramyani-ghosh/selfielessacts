@@ -1,27 +1,28 @@
 module.exports = (app) => {
     const acts = require('../controllers/note.controller.js');
+
     //Add a user
     app.post('/api/v1/users',acts.addUser);
     //Remove a user
     app.delete('/api/v1/users/:username',acts.removeUser);
-    // List all categories
-    app.get('/api/category/list',acts.listAllCat);
+    // List all categories and add cat
+    app.all('/api/v1/categories',acts.commonCat);
     // Add a cat
-    app.post('/api/category/add',acts.addCat);
+    // app.all('/api/v1/categories',acts.addCat);
     // Remove a cat
     // app.delete('/api/category/remove',acts.removeCat);
     // List acts for a given Category
-    app.get('/api/act/list',acts.listCatAct);
+    app.all('/api/v1/categories/:categoryName/acts',acts.listCat);
     // List number of acts for a given category
-    app.get('/api/category/size',acts.listCatActCount);
+    app.all('/api/v1/categories/:categoryName/acts/size',acts.listCatCount);
     // List Acts for a given category in given range
-    app.get('/api/act/list-in-range',acts.getCountInRange);
+    app.all('/api/v1/categories/:categoryName/acts',acts.getCountInRange);
     // Upvote an act
-    app.post('/api/act/upvote',acts.upvoteAct);
+    app.all('/api/v1/acts/upvote',acts.upvoteAct);
     // Remove an act
-    app.delete('/api/act/remove',acts.removeAct);
+    app.all('/api/v1/acts/:actId',acts.removeAct);
     // Upload Act
-    app.post('/api/act/upload', acts.uploadAct);
+    app.all('/api/v1/acts', acts.uploadAct);
     // Retrieve all Notes
     app.get('/notes', acts.findAll);
 };
