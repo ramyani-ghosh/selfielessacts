@@ -10,7 +10,7 @@ module.exports = (app) => {
     // Add a cat
     // app.all('/api/v1/categories',acts.addCat);
     // Remove a cat
-    // app.delete('/api/category/remove',acts.removeCat);
+    app.all('/api/v1/categories/:categoryName',acts.removeCat);
     // List acts for a given Category
     app.all('/api/v1/categories/:categoryName/acts',acts.listCat);
     // List number of acts for a given category
