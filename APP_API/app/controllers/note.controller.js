@@ -316,7 +316,7 @@ exports.uploadAct = (req,res) => {
             });
         }
 
-        if(!date.isValid(act.timestamp)){
+        if(!date.isValid(act.timestamp,'DD-MM-YYYY:ss-mm-hh')){
             res.status(400).send({
                 message: "invalid timestamp"
             });
