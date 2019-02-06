@@ -1,4 +1,5 @@
 const schemas = require('../models/note.model.js');
+var isBase64 = require('is-base64');
 const Act = schemas.Act;
 const Category = schemas.Category;
 const User = schemas.User;
@@ -263,7 +264,7 @@ exports.uploadAct = (req,res) => {
             category:req.body.category,
             caption:req.body.caption,
             timestamp:req.body.timestamp,
-            imgUrl:req.body.imgUrl,
+            imgB64:req.body.imgB64,
             username: req.body.username,
             upVotes:0
         });
@@ -276,14 +277,20 @@ exports.uploadAct = (req,res) => {
                     //message: "category doesn't exist"
                 });
             }
-        }
+        });
         User.find({username:act.username}).then(data => {
             if(data.length==0){
                 res.status(400).send({
                     //message: "username doesn't exist"
                 });
             }
+        });
+        if(!isBase64(act.imgB64)){
+            res.status(400).send({
+                    //message: "invalid b64 string"
+                });
         }
+
         act.save()
         .then(data => {
             res.status(201).send({

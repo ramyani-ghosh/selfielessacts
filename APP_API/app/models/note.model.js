@@ -5,8 +5,9 @@ const ActSchema = mongoose.Schema({
     category:String,
     caption:String,
     timestamp:String,
-    imgUrl:String,
-    upVotes:Number
+    imgB64:String,
+    upVotes:Number,
+    username: String
 });
 
 const CategorySchema = mongoose.Schema({
