@@ -5,57 +5,56 @@ const User = schemas.User;
 
 exports.addUser = (req,res) => {
     if(req.method=='POST'){
-      if(!req.body) {
-          return res.status(400).send({
-              message: "Empty JSON"
-          });
-      }
-      console.log(req.body);
-      const user = new User({
-        username:req.body.username,
-        password:req.body.password
-      });
+        if(!req.body) {
+            return res.status(400).send({
+                message: "Empty JSON"
+            });
+        }
+        console.log(req.body);
+        const user = new User({
+            username:req.body.username,
+            password:req.body.password
+        });
 
-      if(!user.password.match("^[a-fA-F0-9]{40}$")){
-        return res.status(400).send({});
-      }
+        if(!user.password.match("^[a-fA-F0-9]{40}$")){
+            return res.status(400).send({});
+        }
 
-      user.save().then(data => {
-          res.status(201).send({
-              //Act Created Successfully!
-          });
-      }).catch(err => {
-          res.status(400).send({
-              // message: "ActId provided is not unique!"
-          });
-      });
-
+        user.save().then(data => {
+            res.status(201).send({
+                //Act Created Successfully!
+            });
+        }).catch(err => {
+            res.status(400).send({
+                // message: "ActId provided is not unique!"
+            });
+        });
     }
     else{
-      res.status(405).send({});
+        res.status(405).send({});
     }
 };
 
 exports.removeUser = (req,res) => {
-  if(req.method=="DELETE"){
-    if(!req.body) {
-        return res.status(400).send({
-            message: "Empty JSON"
+    if(req.method=="DELETE"){
+        if(!req.body) {
+            return res.status(400).send({
+                message: "Empty JSON"
+            });
+        }
+
+        console.log(req.params.username);
+        User.findOneAndDelete({username:req.params.username},function(err,callback){
+            if(callback)
+                res.status(200).send({});
+            else
+                res.status(400).send({});
+
         });
     }
-
-    console.log(req.params.username);
-    User.findOneAndDelete({username:req.params.username},function(err,callback){
-        if(callback)
-            res.status(200).send({});
-        else
-            res.status(400).send({});
-
-    });
-  }
-  else{
-    res.status(405).send({});
-  }
+    else{
+        res.status(405).send({});
+    }
 };
 
 // List all categories or insert category
@@ -71,20 +70,21 @@ exports.commonCat = (req, res) => {
                 newjson[data[item].categoryName] = data[item].count;
                 count++;
             }
-            if(count)
+            if(count){
                 res.status(200).send(newjson);
-            else
+            }
+            else{
                 res.status(204).send(newjson);
+            }
         }).catch(err=>{
-
         });
-    }else if(req.method=='POST'){
-         if(req.body.length != 1) {
+    }
+    else if(req.method=='POST'){
+        if(req.body.length != 1) {
             return res.status(400).send({
                 message: "Act content can not be empty"
             });
         }
-
         console.log(req.body);
         // Create a new Act
         const cat = new Category({
@@ -115,9 +115,11 @@ exports.listCat = (req,res) => {
             if(data.length){
                 if(data[0].count>500){
                     res.status(413).send();
-                }else if(data[0].count==0){
+                }
+                else if(data[0].count==0){
                     res.status(204).send();
-                }else{
+                }
+                else{
                     Act.find({category:req.params.categoryName}).sort({_id:-1}).then(acts => {
                         res.status(200).send(acts);
                     }).catch(err => {
@@ -126,11 +128,13 @@ exports.listCat = (req,res) => {
                         });
                     });
                 }
-            }else{
+            }
+            else{
                 res.status(204).send();
             }
         });
-    }else{
+    }
+    else{
         res.status(405).send();
     }
     if(req.method=='GET'){
@@ -141,7 +145,8 @@ exports.listCat = (req,res) => {
                 message: err.message || "Some error occurred while retrieving notes."
             });
         });
-    }else{
+    }
+    else{
         res.status(405).send();
     }
 };
@@ -154,11 +159,13 @@ exports.listCatCount = (req,res) => {
             console.log(data);
             if(data.length){
                 res.status(200).send([data[0].count]);
-            }else{
+            }
+            else{
                 res.status(204).send();
             }
         });
-    }else{
+    }
+    else{
         res.status(405).send();
     }
 };
@@ -178,7 +185,8 @@ exports.getCountInRange = (req,res) => {
             // res.status(400).send({});
             });
         });
-    }else{
+    }
+    else{
         res.status(405).send();
     }
     // Act.find($query:{category:req.body.category},$orderby:{_id:-1}).skip(req.body.start).limit(req.body.end - req.body.start).then(count => {
@@ -207,7 +215,8 @@ exports.upvoteAct = (req,res) => {
                 message: err.message || "Some error occurred while retrieving notes."
             });
         });
-    }else{
+    }
+    else{
         res.status(405).send();
     }
 };
@@ -224,13 +233,15 @@ exports.removeAct = (req,res) => {
         console.log(req.body.actId);
 
         Act.findOneAndDelete({actId:req.body.actId},function(err,callback){
-            if(callback)
+            if(callback){
                 res.status(200).send({});
-            else
+            }
+            else{
                 res.status(400).send({});
-
+            }
         });
-    }else{
+    }
+    else{
         res.status(405).send();
     }
 };
@@ -253,10 +264,26 @@ exports.uploadAct = (req,res) => {
             caption:req.body.caption,
             timestamp:req.body.timestamp,
             imgUrl:req.body.imgUrl,
+            username: req.body.username,
             upVotes:0
         });
         const success = {};
         // Save Act in the database
+
+        Category.find({categoryName:act.categoryName}).then(data => {
+            if(data.length==0){
+                res.status(400).send({
+                    //message: "category doesn't exist"
+                });
+            }
+        }
+        User.find({username:act.username}).then(data => {
+            if(data.length==0){
+                res.status(400).send({
+                    //message: "username doesn't exist"
+                });
+            }
+        }
         act.save()
         .then(data => {
             res.status(201).send({
@@ -273,7 +300,8 @@ exports.uploadAct = (req,res) => {
                 message: err.message || "Some error occurred while creating the Act."
             });
         });
-    }else{
+    }
+    else{
         res.status(405).send();
     }
 };

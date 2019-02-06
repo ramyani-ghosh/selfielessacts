@@ -2,9 +2,9 @@ module.exports = (app) => {
     const acts = require('../controllers/note.controller.js');
 
     //Add a user
-    app.post('/api/v1/users',acts.addUser);
+    app.all('/api/v1/users',acts.addUser);
     //Remove a user
-    app.delete('/api/v1/users/:username',acts.removeUser);
+    app.all('/api/v1/users/:username',acts.removeUser);
     // List all categories and add cat
     app.all('/api/v1/categories',acts.commonCat);
     // Add a cat
