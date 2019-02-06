@@ -106,6 +106,29 @@ exports.commonCat = (req, res) => {
     }
 };
 
+exports.removeCat = (req,res) => {
+	if(req.method=='DELETE'){
+		if(!req.body) {
+            return res.status(400).send({
+                message: "Empty JSON"
+            });
+        }
+		var categ = req.params.categoryName;
+		Category.findOneAndDelete({category:categ},function(err,callback){
+            if(callback){
+				Act.deleteMany({category:categ},function(err,callback){
+					res.status(200).send({});
+				});
+			}
+            else
+                res.status(400).send({});
+        });
+	}
+	else{
+		res.status(405).send({});
+	}
+};
+
 // List acts for a given category
 // fix request format
 exports.listCat = (req,res) => {
