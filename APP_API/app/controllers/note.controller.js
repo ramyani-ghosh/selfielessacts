@@ -1,5 +1,6 @@
 const schemas = require('../models/note.model.js');
-var isBase64 = require('is-base64');
+const isBase64 = require('is-base64');
+const date = require('date-and-time');
 const Act = schemas.Act;
 const Category = schemas.Category;
 const User = schemas.User;
@@ -299,9 +300,16 @@ exports.uploadAct = (req,res) => {
         });
         if(!isBase64(act.imgB64)){
             res.status(400).send({
-                    message: "invalid b64 string"
-                });
+                message: "invalid b64 string"
+            });
         }
+
+        if(!date.isValid(act.timestamp,'DD-MM-YYYY:ss-mm-hh')){
+            res.status(400).send({
+                message: "invalid timestamp"
+            });
+        }
+
         act.save().then(data => {
             res.status(201).send({
                 //Act Created Successfully!
