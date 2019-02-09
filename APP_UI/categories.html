@@ -14,27 +14,27 @@
 		<h1 class="title">CATEGORIES</h1>
     <a href="index.html" class="home">Home</a>
 		<ul class="rolldown-list" id="myList">
-		   <li><span class="category">Society</span> <span class="noOfPosts">(10)</span></li>
+		   <!-- <li><span class="category">Society</span> <span class="noOfPosts">(10)</span></li>
 		  <li><span class="category">Personal</span> <span class="noOfPosts">(5)</span></li>
 		  <li><span class="category">Environment</span> <span class="noOfPosts">(16)</span></li>
- 
+  -->
 		</ul>
     <div class="categoryFunctions">
         <form class ="addCat">
           <p style="text-align:center">ADD CATEGORY:</p>
-          <p>Category  :  <input type="text" class="categoryName" placeholder="Category Name"/>
+          <p>Category  :  <input type="text" class="categoryName" id="addCategoryName"placeholder="Category Name"/>
           <button class="addCategory">Add</button>
         </form>
         <form class ="remCat">
           <p style="text-align:center">REMOVE CATEGORY:</p>
-          <p>Category  :  <input type="text" class="categoryName" placeholder="Category Name"/>
+          <p>Category  :  <input type="text" class="categoryName" id="remCategoryName" placeholder="Category Name"/>
           <button class="remCategory">Remove</button>
         </form>
         <form class="filterPosts">
           <p style="text-align:center">FILTER POSTS BY INDEX:</p>
           <p>Start Index:  <input type="text" class="startIndex" /></p>
           <p>End Index   :  <input type="text" class="endIndex"/></p>
-          <p>Category    :  <input type="text" class="categoryName" placeholder="Category Name"/></p>
+          <p>Category    :  <input type="text" class="categoryName" id="dispCategoryName" placeholder="Category Name"/></p>
 
           <button class="displayPosts">Display Posts</button>
 
@@ -62,4 +62,26 @@
              }
          });
     });
+   $(".addCategory").click(function(){
+    var requestJson = [$("#addCategoryName").val()];
+    var url = "http://localhost:3000/api/v1/categories";
+    $.ajax({
+      'type':"POST",
+      'url': url,
+      'contentType':'application/json',
+      'data' : JSON.stringify(requestJson),
+      'dataType' : 'json',
+    });
+   });
+   $(".remCategory").click(function(){
+    var url = "http://localhost:3000/api/v1/categories/" + $("#remCategoryName").val();
+    $.ajax({
+      'type':"DELETE",
+      'url': url,
+    })
+   });
+   // $(".displayPosts").click(function(){
+   //  var url = "http://localhost:3000/api/v1/categories/" + $("#dispCategoryName").val() + "/acts";
+   //  $.get(url)
+   // });
 </script>

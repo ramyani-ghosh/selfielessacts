@@ -40,7 +40,7 @@ html,body {
   margin-bottom: .125em;
   display: block;
   list-style: none;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 
 }
 
@@ -67,7 +67,7 @@ html,body {
 }
 
 .categoryFunctions{
-  position: fixed;
+  position: absolute;
   right: 5%;
   top:15%;
 }
