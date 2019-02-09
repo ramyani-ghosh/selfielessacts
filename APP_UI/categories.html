@@ -20,13 +20,21 @@
 
 		</ul>
     <div class="categoryFunctions">
-        <button class="addCategory">Add Category</button>
-        <button class="remCategory">Remove Category</button>
+        <form class ="addCat">
+          <p style="text-align:center">ADD CATEGORY:</p>
+          <p>Category  :  <input type="text" class="categoryName" placeholder="Category Name"/>
+          <button class="addCategory">Add</button>
+        </form>
+        <form class ="remCat">
+          <p style="text-align:center">REMOVE CATEGORY:</p>
+          <p>Category  :  <input type="text" class="categoryName" placeholder="Category Name"/>
+          <button class="remCategory">Remove</button>
+        </form>
         <form class="filterPosts">
-          <p style="text-align:center">Filter Posts by date and category:</p>
-          <p>Start Date:  <input type="date" class="startDate" /></p>
-          <p>End Date  :  <input type="date" class="endDate"/></p>
-          <p>Category  :  <input type="text" class="categoryName" placeholder="Category Name"/></p>
+          <p style="text-align:center">FILTER POSTS BY INDEX:</p>
+          <p>Start Index:  <input type="text" class="startIndex" /></p>
+          <p>End Index   :  <input type="text" class="endIndex"/></p>
+          <p>Category    :  <input type="text" class="categoryName" placeholder="Category Name"/></p>
 
           <button class="displayPosts">Display Posts</button>
 
@@ -36,6 +44,22 @@
 
 
 </body>
-
-
 </html>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script>
+   $(window).load(function(){
+        console.log("load");
+        $.get("http://localhost:3000/api/v1/categories")
+         .done(function(data){
+             console.log("GET");
+             console.log(data);
+
+             for(var item in data){
+                $("#myList").append("<li><span class='category'>"+item+"</span><span class='noOfPosts'>("+
+                  data[item]+")</li>");
+                //   $("select.category").append("<option value="+item+">"+item+"</option>");
+                 console.log(item,data[item]);
+             }
+         });
+    });
+</script>
