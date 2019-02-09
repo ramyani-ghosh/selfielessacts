@@ -37,9 +37,9 @@
       <br><br>
       <label for="category"><b>Category</b></label>
       <select class="category" name="category">
-        <option value="Society">Society</option>
+        <!-- <option value="Society">Society</option>
         <option value="Environment">Environment</option>
-        <option value="Personal">Personal</option>
+        <option value="ersonal">Personal</option> -->
       </select>
       <!-- <label class="newcategory" >or <a ><b> Add New Category</b></a></label> -->
 
@@ -58,7 +58,19 @@
 <script src="node_modules/image-to-base64/image-to-base64.min.js"></script>
 
 <script>
+    $(".form-popup").ready(function(){
+        console.log("load");
+        $.get("http://localhost:3000/api/v1/categories")
+         .done(function(data){
+             console.log("GET");
+             console.log(data);
 
+             for(var item in data){
+                 $("select.category").append("<option value="+item+">"+item+"</option>");
+                 console.log(item);
+             }
+         });
+    });
      var srcData = "HEL";
     $(".picture").change(function(){
         var filesSelected = document.querySelector(".picture").files;
@@ -109,6 +121,7 @@
 
         $.post("http://localhost:3000/api/v1/acts",requestJson)
          .done(function(data){
+             console.log("POST DATA");
              console.log(data);
          });
     });
