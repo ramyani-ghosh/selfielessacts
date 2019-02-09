@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "base64-img": "^1.0.4",
+    "image-to-base64": "^2.0.1",
     "js-sha1": "^0.6.0"
   }
 }

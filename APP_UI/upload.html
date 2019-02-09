@@ -11,44 +11,116 @@
   <center>
     <h1>Upload Your Act of Kindness</h1>
   <div class="form-popup" id="uploadForm">
-    <form action="http://localhost:3000/api/act/upload" class="form-container">
+    <form class="form-container">
 
 
 
       <label for="caption"><b>Caption</b></label><br>
-      <input type="text" placeholder="Enter caption for your post" name="caption" required>
+      <input type="text" placeholder="Enter caption for your post" name="caption" class="caption" required>
       <br><br>
 
       <!-- Decide how to uplaod pictures:  -->
       <label for="imgurl"><b>Upload Image</b></label><br>
-      <input type="text" placeholder="Enter URL of image" name="imgurl" style="width:50%;" required>
+      <input type="file" name="pic" class="picture" accept="image/*">
       <button type="" style="width:10%;margin-top:0" class="btn">Upload</button>
       <br><br>
 
       <label for="desc"><b>ACT ID</b></label><br>
-      <input type="text" placeholder="Enter act ID" name="actid" required>
+      <input type="text" placeholder="Enter act ID" name="actid" class="actId" required>
+
+      <br><br>
+      <br><br>
+
+      <label for="desc"><b>USERNAME</b></label><br>
+      <input type="text" placeholder="Enter Username" name="username" class="username" required>
 
       <br><br>
       <label for="category"><b>Category</b></label>
-      <select class="category" >
-        <option value="society">Society</option>
-        <option value="environment">Environment</option>
-        <option value="personal">Personal</option>
+      <select class="category" name="category">
+        <option value="Society">Society</option>
+        <option value="Environment">Environment</option>
+        <option value="Personal">Personal</option>
       </select>
-      <label class="newcategory" >or <a ><b> Add New Category</b></a></label>
+      <!-- <label class="newcategory" >or <a ><b> Add New Category</b></a></label> -->
 
       <br><br>
 
 
 
-      <button type="submit" class="btn">Submit</button>
+      <button class="btn btn-submit">Submit</button>
       <a href="index.html"><button type="button" class="btn cancel" >Cancel</button></a>
     </form>
   </div>
 </div>
 
 </center>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="node_modules/image-to-base64/image-to-base64.min.js"></script>
 
+<script>
+
+     var srcData = "HEL";
+    $(".picture").change(function(){
+        var filesSelected = document.querySelector(".picture").files;
+
+        if (filesSelected.length > 0) {
+            var fileToLoad = filesSelected[0];
+            var fileReader = new FileReader();
+            fileReader.onload = function(fileLoadedEvent) {
+                srcData = fileLoadedEvent.target.result; // <--- data: base64
+                // console.log("Converted Base64 version is " + srcData);
+            }
+            fileReader.readAsDataURL(fileToLoad);
+        }
+        console.log(srcData);
+    });
+
+    $(".btn-submit").click(function(event){
+        var cat = $('select[name="category"] :selected').val();
+        console.log(cat);
+        event.preventDefault();
+        var d = new Date();
+        month = String(d.getMonth() + 1);
+        day = String(d.getDate());
+        year = d.getFullYear();
+        second = String(d.getSeconds());
+        minute = String(d.getMinutes());
+        hour = String(d.getHours());
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+        if (second.length < 2) second = '0' + second;
+        if (minute.length < 2) minute = '0' + minute;
+        if (hour.length < 2) hour = '0' + hour;
+
+       var mydate =  [[day, month, year].join('-'),[second,minute,hour].join('-')].join(':');
+       console.log(mydate);
+
+        console.log(document.querySelector(".picture").files);
+
+        var requestJson = {
+            actId:$(".actId").val(),
+            category:cat,
+            caption:$(".caption").val(),
+            timestamp:mydate,
+            imgB64:srcData.split(",")[1],
+            username:$(".username").val(),
+        };
+
+
+        $.post("http://localhost:3000/api/v1/acts",requestJson)
+         .done(function(data){
+             console.log(data);
+         });
+    });
+
+    //  $.post("http://localhost:3000/api/v1/acts",)
+    //  .done(function(data){
+    //      console.log(data);
+    //  });
+  //
+  // })
+  //   });
+</script>
 
 </body>
 

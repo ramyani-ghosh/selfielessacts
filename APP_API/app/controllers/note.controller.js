@@ -55,6 +55,7 @@ exports.removeUser = (req,res) => {
     }
     else{
         res.status(405).send({});
+        console.log(req.method);
     }
 };
 
