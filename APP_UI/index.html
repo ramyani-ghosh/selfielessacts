@@ -162,7 +162,7 @@
                     <a href="#" class="category col-sm-5">SOCIETY</a>
                     <div class='removePost col-sm-2' onclick="">X</div>
                   </div>
-                  <div class="row"><p style="color:rgba(200,200,200,0)">blank line hhaa</p></div>
+                  <!-- <div class="row"><p style="color:rgba(200,200,200,0)">blank line hhaa</p></div> -->
                   <div class="row">
                       <div class="col-sm-10">
                           <img class="img-responsive center-block" src="images/soldier.jpg" alt="">
@@ -327,6 +327,38 @@
       $(this).parent().next().find(".noOfVotes").text(votes+" votes");
   });
 
+var username = "PKK";
+var category = "PKK";
+var upvote = 12;
 
+var pkk = `<section class="content">
+              <div class="container post">
+                  <div class="row">
+                    <img class="col-sm-1" src="images/usericon.png" style="padding:10px;width:7%;" alt="">
+                    <a href="#" class="username col-sm-4">`+username+`</a>
+                    <a href="#" class="category col-sm-5">`+category+`</a>
+                    <div class='removePost col-sm-2' onclick="">X</div>
+                  </div>
+                  <div class="row"><p style="color:rgba(200,200,200,0)">blank line hhaa</p></div>
+                  <div class="row">
+                      <div class="col-sm-10">
+                          <img class="img-responsive center-block" src="data:image/jpeg;base64,'`+imagesrc+`" alt="">
+                      </div>
+                      <div class="col-sm-2 upvote">
+                          <img class="img-responsive center-block"  src="images/upvote-psd.png" style="margin-left:10%;width:60%" alt="">
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-sm-4 noOfVotes" style="padding-top:2%;padding-left:2%;font-size:25px;color:rgb(180,180,180)">`+upvote+`votes</div>
+                  </div>
+                  <div class="row">
+                        <p class="lead text-muted" style="padding-left:2%">`+caption+`</p>
+
+                  </div>
+
+              </div>
+          </section>`;
+
+$(".posts:last-child").after(pkk);
 
 </script>
