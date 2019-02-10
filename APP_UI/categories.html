@@ -41,24 +41,25 @@
         </form>
     </div>
 
-
+    <div class="posts">
+    </div>
 
 </body>
 </html>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script>
    $(window).load(function(){
-        console.log("load");
+        // console.log("load");
         $.get("http://54.144.195.174/api/v1/categories")
          .done(function(data){
-             console.log("GET");
-             console.log(data);
+             // console.log("GET");
+             // console.log(data);
 
              for(var item in data){
                 $("#myList").append("<li><span class='category'>"+item+"</span><span class='noOfPosts'>("+
                   data[item]+")</li>");
                 //   $("select.category").append("<option value="+item+">"+item+"</option>");
-                 console.log(item,data[item]);
+                 // console.log(item,data[item]);
              }
          });
     });
@@ -86,8 +87,60 @@
     });
     return false;
    });
-   // $(".displayPosts").click(function(){
-   //  var url = "http://localhost:3000/api/v1/categories/" + $("#dispCategoryName").val() + "/acts";
-   //  $.get(url)
-   // });
+   $(".displayPosts").click(function(){
+    console.log($("#dispCategoryName").val());
+    var url = "http://54.144.195.174/api/v1/categories/" + $("#dispCategoryName").val() + "/acts";
+    console.log(url);
+    console.log(if($(".startIndex").val()));
+    $.get(url)
+    .done(function(data){
+      console.log(data);
+     for(var item in data){
+      console.log(item);
+         username = data[item].username;
+         category = data[item].category;
+         upvote = parseInt(data[item].upVotes);
+         imgsrc = data[item].imgB64;
+         caption = data[item].caption;
+         actid = data[item].actId;
+         var actBlock = `<section class="content">
+                       <div class="container post">
+                           <div class="row">
+                             <img class="col-sm-1" src="images/usericon.png" style="padding:10px;width:7%;" alt="">
+                             <a href="#" class="username col-sm-4">`+username+`</a>
+                             <a href="#" class="category actid col-sm-5">`+actid+`</a>
+                             <a href="#" class="category col-sm-6">`+category+`</a>
+                             <div class='removePost col-sm-2' onclick="">X</div>
+                           </div>
+                           <div class="row"><p style="color:rgba(200,200,200,0)">blank line hhaa</p></div>
+                           <div class="row">
+                               <div class="col-sm-10">
+                                   <img class="img-responsive center-block" src="data:image/jpeg;base64,`+imgsrc+`" alt="">
+                               </div>
+                               <div class="col-sm-2 upvote">
+                                   <img class="img-responsive center-block"  src="images/upvote-psd.png" style="margin-left:10%;width:60%" alt="">
+                               </div>
+                           </div>
+                           <div class="row">
+                               <div class="col-sm-4 noOfVotes" style="padding-top:2%;padding-left:2%;font-size:25px;color:rgb(180,180,180)">`+upvote+`votes</div>
+                           </div>
+                           <div class="row">
+                                 <p class="lead text-muted" style="padding-left:2%">`+caption+`</p>
+
+                           </div>
+
+                       </div>
+                   </section>`;
+         $(".posts").append(actBlock);
+         $(".content").last().find(".upvote").click(function(){
+             up(this);
+         });
+         $(".content").last().find(".removePost").click(function(){
+             up1(this);
+             $(this).parent().parent().parent().remove();
+         });
+     }
+   });
+    return false;
+  });
 </script>
