@@ -50,7 +50,7 @@
 <script>
    $(window).load(function(){
         // console.log("load");
-        $.get("http://54.144.195.174/api/v1/categories")
+        $.get("http://localhost:3000/api/v1/categories")
          .done(function(data){
              // console.log("GET");
              // console.log(data);
@@ -89,11 +89,16 @@
    });
    $(".displayPosts").click(function(){
     console.log($("#dispCategoryName").val());
-    var url = "http://54.144.195.174/api/v1/categories/" + $("#dispCategoryName").val() + "/acts";
+    var url = "http://localhost:3000/api/v1/categories/" + $("#dispCategoryName").val() + "/acts";
+    // console.log(url);
+    if(($(".startIndex").val().length) !== 0 || ($(".endIndex").val().length) !== 0){
+      url += "?start=" + $(".startIndex").val() + "&end=" + $(".endIndex").val()
+    }
     console.log(url);
-    console.log(if($(".startIndex").val()));
+    // location.reload();
     $.get(url)
     .done(function(data){
+
       console.log(data);
      for(var item in data){
       console.log(item);
