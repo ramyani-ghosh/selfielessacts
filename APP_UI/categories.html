@@ -13,7 +13,7 @@
 <body>
 		<h1 class="title">CATEGORIES</h1>
     <a href="index.html" class="home">Home</a>
-
+    
       <ul class="rolldown-list" id="myList">
         <!-- <li><span class="category">Society</span> <span class="noOfPosts">(10)</span></li>
          <li><span class="category">Personal</span> <span class="noOfPosts">(10)</span></li>
@@ -88,7 +88,7 @@
 <script>
    $(window).load(function(){
         // console.log("load");
-        $.get("http://localhost:3000/api/v1/categories")
+        $.get("http://54.144.195.174/api/v1/categories")
          .done(function(data){
              // console.log("GET");
              // console.log(data);
@@ -127,7 +127,7 @@
    });
    $(".displayPosts").click(function(){
     console.log($("#dispCategoryName").val());
-    var url = "http://localhost:3000/api/v1/categories/" + $("#dispCategoryName").val() + "/acts";
+    var url = "http://54.144.195.174/api/v1/categories/" + $("#dispCategoryName").val() + "/acts";
     // console.log(url);
     if(($(".startIndex").val().length) !== 0 || ($(".endIndex").val().length) !== 0){
       url += "?start=" + $(".startIndex").val() + "&end=" + $(".endIndex").val()
@@ -146,7 +146,7 @@
          imgsrc = data[item].imgB64;
          caption = data[item].caption;
          actid = data[item].actId;
-         var actBlock = `<!--<div class="post-container">
+         var actBlock = `<div class="post-container">
                                  <div  class="actid">`+actid+`</div>
                                  <div  class="cat">`+category+`</div>
                                  <img class="usericon" src="images/usericon.png" style="padding:10px;width:7%;" alt="">
@@ -161,7 +161,7 @@
                                  <div class="col-sm-4 noOfVotes" style="padding-top:2%;padding-left:2%;font-size:25px;color:rgb(180,180,180)">`+upvote+`votes</div>
 
                                  <p class="lead text-muted" style="padding-left:2%">`+caption+`</p>
-                         </div>-->`;
+                         </div>`;
          $(".posts").append(actBlock);
          $(".content").last().find(".upvote").click(function(){
              up(this);
