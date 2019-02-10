@@ -40,6 +40,7 @@ app.use(function (req, res, next) {
 // Configuring the database
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
+const urlConfig = require('./config/database.config.js');
 
 mongoose.Promise = global.Promise;
 

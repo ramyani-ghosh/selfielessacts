@@ -314,8 +314,9 @@
 
 </html>
 
-
+<script src="config/url.js"></script>
 <script>
+
   function up(t){
       var val = $(t).parent().next().find(".noOfVotes").text();
       var votes = parseInt(val);
@@ -325,7 +326,7 @@
       req.push($(t).parent().parent().parent().find(".actid").text());
       $.ajax({
           'type':"POST",
-          'url': "http://54.144.195.174/api/v1/acts/upvote",
+          'url': domainURL+"/api/v1/acts/upvote",
           'contentType':'application/json',
           'data' : JSON.stringify(req),
           'dataType' : 'json',
@@ -336,7 +337,7 @@ function up1(t){
     var actidd = $(t).parent().parent().parent().find(".actid").text();
     $.ajax({
         'type':"DELETE",
-        'url': "http://54.144.195.174/api/v1/acts/"+actidd,
+        'url': domainURL+"/api/v1/acts/"+actidd,
         'contentType':'application/json',
         'data' : {},
         'dataType' : 'json',
@@ -348,7 +349,7 @@ function up1(t){
   var imgsrc="";
   var caption= "pksgrgk";
 
-  $.get("http://54.144.195.174/notes")
+  $.get(domainURL+"/notes")
   .done(function(data){
      for(var item in data){
          username = data[item].username;

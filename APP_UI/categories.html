@@ -13,7 +13,7 @@
 <body>
 		<h1 class="title">CATEGORIES</h1>
     <a href="index.html" class="home">Home</a>
-    
+
       <ul class="rolldown-list" id="myList">
         <!-- <li><span class="category">Society</span> <span class="noOfPosts">(10)</span></li>
          <li><span class="category">Personal</span> <span class="noOfPosts">(10)</span></li>
@@ -88,7 +88,7 @@
 <script>
    $(window).load(function(){
         // console.log("load");
-        $.get("http://54.144.195.174/api/v1/categories")
+        $.get(domainURL+"/api/v1/categories")
          .done(function(data){
              // console.log("GET");
              // console.log(data);
@@ -103,7 +103,7 @@
     });
    $(".addCategory").click(function(){
     var requestJson = [$("#addCategoryName").val()];
-    var url = "http://54.144.195.174/api/v1/categories";
+    var url = domainURL+"/api/v1/categories";
     $.ajax({
       'type':"POST",
       'url': url,
@@ -116,7 +116,7 @@
     return false;
    });
    $(".remCategory").click(function(){
-    var url = "http://54.144.195.174/api/v1/categories/" + $("#remCategoryName").val();
+    var url = domainURL+"/api/v1/categories/" + $("#remCategoryName").val();
     $.ajax({
       'type':"DELETE",
       'url': url,
@@ -127,7 +127,7 @@
    });
    $(".displayPosts").click(function(){
     console.log($("#dispCategoryName").val());
-    var url = "http://54.144.195.174/api/v1/categories/" + $("#dispCategoryName").val() + "/acts";
+    var url = domainURL+"/api/v1/categories/" + $("#dispCategoryName").val() + "/acts";
     // console.log(url);
     if(($(".startIndex").val().length) !== 0 || ($(".endIndex").val().length) !== 0){
       url += "?start=" + $(".startIndex").val() + "&end=" + $(".endIndex").val()
