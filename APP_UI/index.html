@@ -316,16 +316,32 @@
 
 
 <script>
-  $(".upvote").click(function(){
-
-      console.log($(this).parent().next());
-      var val = $(this).parent().next().find(".noOfVotes").text();
+  function up(t){
+      var val = $(t).parent().next().find(".noOfVotes").text();
       var votes = parseInt(val);
-      console.log(votes);
       votes++;
-      $(this).parent().next().find(".noOfVotes").text(votes+" votes");
-  });
+      $(t).parent().next().find(".noOfVotes").text(votes+" votes");
+      var req = new Array();
+      req.push($(t).parent().parent().parent().find(".actid").text());
+      $.ajax({
+          'type':"POST",
+          'url': "http://54.144.195.174/api/v1/acts/upvote",
+          'contentType':'application/json',
+          'data' : JSON.stringify(req),
+          'dataType' : 'json',
+        });
+}
 
+function up1(t){
+    var actidd = $(t).parent().parent().parent().find(".actid").text();
+    $.ajax({
+        'type':"DELETE",
+        'url': "http://54.144.195.174/api/v1/acts/"+actidd,
+        'contentType':'application/json',
+        'data' : {},
+        'dataType' : 'json',
+      });
+}
   var username = "PKksfhkhfK";
   var category = "PdghgKK";
   var upvote = 12;
@@ -334,21 +350,20 @@
 
   $.get("http://54.144.195.174/notes")
   .done(function(data){
-      console.log(data);
      for(var item in data){
-         console.log(data[item]);
          username = data[item].username;
          category = data[item].category;
          upvote = parseInt(data[item].upVotes);
          imgsrc = data[item].imgB64;
          caption = data[item].caption;
-
+         actid = data[item].actId;
          var pkk = `<section class="content">
                        <div class="container post">
                            <div class="row">
                              <img class="col-sm-1" src="images/usericon.png" style="padding:10px;width:7%;" alt="">
                              <a href="#" class="username col-sm-4">`+username+`</a>
-                             <a href="#" class="category col-sm-5">`+category+`</a>
+                             <a href="#" class="category actid col-sm-5">`+actid+`</a>
+                             <a href="#" class="category col-sm-6">`+category+`</a>
                              <div class='removePost col-sm-2' onclick="">X</div>
                            </div>
                            <div class="row"><p style="color:rgba(200,200,200,0)">blank line hhaa</p></div>
@@ -370,10 +385,15 @@
 
                        </div>
                    </section>`;
-       console.log('xyz');
          $(".content").last().after(pkk);
+         $(".content").last().find(".upvote").click(function(){
+             up(this);
+         });
+         $(".content").last().find(".removePost").click(function(){
+             up1(this);
+             $(this).parent().parent().parent().remove();
+         });
      }
-     console.log(123,username);
 
   });
 

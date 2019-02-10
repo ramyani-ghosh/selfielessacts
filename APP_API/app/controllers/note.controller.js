@@ -187,7 +187,7 @@ exports.listCat = (req,res) => {
                             })
                         }
                         res.status(200).send(actsInRange);
-                       }); 
+                       });
                     }
                 }
             });
@@ -226,9 +226,11 @@ exports.upvoteAct = (req,res) => {
         }
         Act.find({actId:req.body[0]}).then(data => {
             if(data.length == 0)
-                res.status(400).send();
+                res.status(400).send({
+                    message:"No actid match"
+                });
         })
-        Act.update({actId:req.body[0]},{$inc:{upVotes:1}}).then(response => res.send(response)).catch(err => {
+        Act.update({actId:req.body[0]},{$inc:{upVotes:1}}).then(response => res.status(200).send(response)).catch(err => {
             res.status(500).send({
                 message: err.message || "Some error occurred while retrieving notes."
             });
