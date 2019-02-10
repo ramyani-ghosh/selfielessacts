@@ -49,7 +49,7 @@
 <script>
    $(window).load(function(){
         console.log("load");
-        $.get("http://localhost:3000/api/v1/categories")
+        $.get("http://54.144.195.174/api/v1/categories")
          .done(function(data){
              console.log("GET");
              console.log(data);
@@ -64,21 +64,27 @@
     });
    $(".addCategory").click(function(){
     var requestJson = [$("#addCategoryName").val()];
-    var url = "http://localhost:3000/api/v1/categories";
+    var url = "http://54.144.195.174/api/v1/categories";
     $.ajax({
       'type':"POST",
       'url': url,
       'contentType':'application/json',
       'data' : JSON.stringify(requestJson),
       'dataType' : 'json',
+    }).done(function(data){
+      location.reload();  
     });
+    return false;
    });
    $(".remCategory").click(function(){
-    var url = "http://localhost:3000/api/v1/categories/" + $("#remCategoryName").val();
+    var url = "http://54.144.195.174/api/v1/categories/" + $("#remCategoryName").val();
     $.ajax({
       'type':"DELETE",
       'url': url,
-    })
+    }).done(function(data){
+      location.reload();  
+    });
+    return false;
    });
    // $(".displayPosts").click(function(){
    //  var url = "http://localhost:3000/api/v1/categories/" + $("#dispCategoryName").val() + "/acts";
