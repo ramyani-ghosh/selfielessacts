@@ -19,7 +19,7 @@ app.use(function (req, res, next) {
 
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost');
+    res.setHeader('Access-Control-Allow-Origin', 'http://18.210.124.11');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
