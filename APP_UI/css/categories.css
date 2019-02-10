@@ -62,7 +62,10 @@ html,body {
 
 #myList {
   position: relative;
-  width: 100%;
+  width: 60%;
+  margin-left: 3%;
+  margin-top: 2%;
+  color:white;
 
 }
 
