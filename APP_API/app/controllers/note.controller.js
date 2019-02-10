@@ -5,6 +5,14 @@ const Act = schemas.Act;
 const Category = schemas.Category;
 const User = schemas.User;
 
+function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+
 exports.addUser = (req,res) => {
     if(req.method=='POST'){
         if(!req.body) {
@@ -139,7 +147,7 @@ exports.listCat = (req,res) => {
                 // message: "Category Name missing!"
             });
         }
-        if(req.query !== {}){
+        if(isEmpty(req.query)){
             Category.find({categoryName:req.params.categoryName}).then(data => {
                 if(data.length){
                     if(data[0].count > 100){
