@@ -257,14 +257,21 @@ exports.removeAct = (req,res) => {
                 message: "Category Name can not be empty"
             });
         }
+        var categoryName = "";
+        Act.find({actId:req.params.actId}).then(data => {
+            categoryName = data[0]['category'];
+        });
         Act.findOneAndDelete({actId:req.params.actId},function(err,callback){
             if(callback){
+                Category.updateOne({categoryName:categoryName},{$inc:{count:-1}}).then(response => {});
                 res.status(200).send({});
             }
             else{
                 res.status(400).send({});
             }
         });
+
+        
     }
     else{
         res.status(405).send();
