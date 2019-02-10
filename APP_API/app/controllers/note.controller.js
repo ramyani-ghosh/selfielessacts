@@ -139,7 +139,7 @@ exports.listCat = (req,res) => {
                 // message: "Category Name missing!"
             });
         }
-        if(req.query.length == 0){
+        if(req.query !== {}){
             Category.find({categoryName:req.params.categoryName}).then(data => {
                 if(data.length){
                     if(data[0].count > 100){
