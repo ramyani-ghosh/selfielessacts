@@ -7,15 +7,13 @@ html,body {
   font:  1.2em/1.4 'Open Sans','Helvetica Neue',Arial,sans-serif;
 }
 
-.category {
-  color:rgb(250,250,250);
-}
-.noOfPosts{
+.catName, .noOfPosts{
   color:rgb(250,250,250);
 }
 
 .title{
-  position:absolute;
+  position:relative;
+  top: 5%;
   left:10%;
   color: #2A363B  ;
   z-index: 10;
@@ -29,10 +27,12 @@ html,body {
   z-index: 10;
 }
 .rolldown-list {
-  top:15%;
+  position: relative;
+  top:2%;
+  left:0;
   text-align: left;
   padding: 0;
-  margin: 0;
+  margin-bottom: :2%;
 }
 
 .rolldown-list li {
@@ -53,17 +53,17 @@ html,body {
 }
 
 .rolldown-list li:nth-child(2n) {
-  background-color: yellowgreen;
-}
-
-.rolldown-list li:nth-child(2n+1) {
   background-color: #76A63f;
 }
 
+.rolldown-list li:nth-child(2n+1) {
+  background-color: yellowgreen;
+}
+
 #myList {
-  position: absolute;
-  width: 50%;
-  left: 10%;
+  position: relative;
+  width: 100%;
+
 }
 
 .categoryFunctions{
@@ -114,6 +114,80 @@ form p{
   font-size: 20px;
   outline: 0;
 }
+
+.posts{
+  position: absolute;
+  width:55%;
+  top:2%;
+  margin-left: 6%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.post-container{
+  position: relative;
+    background-color: white;
+    border:0;
+    box-shadow:  10px 4px 120px -32px rgba(0,0,0,0.44);
+    padding: 2%;
+    margin-bottom: 2%;
+}
+.actid{
+  position: relative;
+  color:rga(0,0,0,0.5);
+  size:3%;
+  margin-top: -1%;
+
+}
+.upvote{
+  transform:scale(0.4);
+  opacity: 0.6;
+  position: absolute;
+  top:40%;
+  right:-5%;
+}
+.upvote:hover{
+  cursor:pointer;
+  opacity: 0.8;
+}
+
+.usericon{
+  transform: scale(0.8);
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+.username{
+  position: relative;
+  margin-top: -6%;
+  margin-left: 12%;
+
+}
+.cat{
+  position: relative;
+  right:0;
+  color:rga(0,0,0,0.5);
+  size:3%;
+  margin-top: -2%;
+  margin-left: 70%;
+
+}
+.post-img{
+  width:80%;
+  margin-top:3%;
+}
+
+.post-container .removePost{
+  position: absolute;
+  top:1%;
+  right:2%;
+
+}
+
+
+
+
 
 
 @keyframes rolldown {
