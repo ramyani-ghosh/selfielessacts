@@ -63,7 +63,6 @@ exports.removeUser = (req,res) => {
 // List all categories or insert category
 exports.commonCat = (req, res) => {
     if(req.method=='GET'){
-        console.log(req.method=='GET');
         categoryList = Category.find({})
         .then(data=>{
             var newjson = {};
@@ -87,7 +86,6 @@ exports.commonCat = (req, res) => {
                 message: "Act content can not be empty"
             });
         }
-        console.log(req.body);
         // Create a new Act
         const cat = new Category({
             categoryName : req.body[0],
