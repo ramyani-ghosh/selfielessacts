@@ -19,7 +19,7 @@ app.use(function (req, res, next) {
 
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost');
+    res.setHeader('Access-Control-Allow-Origin', 'http://18.210.124.11');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -40,6 +40,7 @@ app.use(function (req, res, next) {
 // Configuring the database
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
+const urlConfig = require('./config/database.config.js');
 
 mongoose.Promise = global.Promise;
 
