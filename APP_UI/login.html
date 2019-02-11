@@ -31,9 +31,9 @@
   <script src="node_modules/js-sha1/src/sha1.js"> </script>
 
   <script>
-    $('.message a').click(function(){
-       $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-    });
+    // $('.message a').click(function(){
+    //    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+    // });
 
 
 
@@ -42,7 +42,7 @@
         var pword = $(".password-create").val();
         console.log(uname);
         console.log(pword);
-        Sha1(pword);
+        sha1(pword);
         var hash = sha1.create();
         hash.update(pword);
         var x = hash.hex();
