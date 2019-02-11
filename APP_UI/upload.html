@@ -121,8 +121,9 @@
 
         $.post(domainURL + "/api/v1/acts",requestJson)
          .done(function(data){
-             console.log("POST DATA");
-             console.log(data);
+             // console.log("POST DATA");
+             // console.log(data);
+             location.reload();
          });
     });
 
