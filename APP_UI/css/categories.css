@@ -7,8 +7,24 @@ html,body {
   font:  1.2em/1.4 'Open Sans','Helvetica Neue',Arial,sans-serif;
 }
 
-.catName, .noOfPosts{
-  color:rgb(250,250,250);
+.category-title{
+
+  position: relative;
+  background-color:#333;
+  padding: 2%;
+  color:white;
+  margin-top:2%;
+
+  margin-left: 0;
+}
+
+.catName, .titleNoOfPosts{
+  
+  font-size: 20px;
+  
+}
+.noOfVotes{
+  margin-top:-8%;
 }
 
 .title{
@@ -61,7 +77,6 @@ html,body {
 }
 
 #myList {
-  position: relative;
   width: 60%;
   margin-left: 3%;
   margin-top: 2%;
@@ -119,15 +134,15 @@ form p{
 }
 
 .posts{
-  position: absolute;
-  width:55%;
+  position: relative;
+  width:50%;
   top:2%;
-  margin-left: 6%;
   margin-top: 5%;
   margin-bottom: 5%;
+  margin-left: 6%;
 }
 
-.post-container{
+.container{
   position: relative;
     background-color: white;
     border:0;
@@ -170,19 +185,33 @@ form p{
 .cat{
   position: relative;
   right:0;
-  color:rga(0,0,0,0.5);
+  color:rgba(0,0,0,0.5);
   size:3%;
   margin-top: -2%;
   margin-left: 70%;
 
 }
-.post-img{
+.img-div{
+  height:80%;
   width:80%;
   margin-top:3%;
 }
+.post-img{
 
-.post-container .removePost{
+  height:90%;
+  width:80%;  
+  y-overflow: hidden;
+  margin-bottom: -5%;
+}
+.removePost{
   position: absolute;
+  right:2%;
+  top:0;
+  cursor: pointer;
+}
+.post-container 
+{
+  position: relative;
   top:1%;
   right:2%;
 
