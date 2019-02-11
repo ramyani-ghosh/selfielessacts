@@ -60,7 +60,7 @@
 <script>
     $(".form-popup").ready(function(){
         console.log("load");
-        $.get(domainUrl + "/api/v1/categories")
+        $.get(domainURL + "/api/v1/categories")
          .done(function(data){
              console.log("GET");
              console.log(data);
@@ -119,7 +119,7 @@
         };
 
 
-        $.post(domainUrl + "/api/v1/acts",requestJson)
+        $.post(domainURL + "/api/v1/acts",requestJson)
          .done(function(data){
              console.log("POST DATA");
              console.log(data);

@@ -113,7 +113,7 @@
       req.push($(t).parent().parent().parent().find(".actid").text());
       $.ajax({
           'type':"POST",
-          'url': "http://localhost:3000/api/v1/acts/upvote",
+          'url': domainURL+"/api/v1/acts/upvote",
           'contentType':'application/json',
           'data' : JSON.stringify(req),
           'dataType' : 'json',
@@ -124,7 +124,7 @@ function up1(t){
     var actidd = $(t).parent().parent().parent().find(".actid").text();
     $.ajax({
         'type':"DELETE",
-        'url': "http://localhost:3000/api/v1/acts/"+actidd,
+        'url': domainURL+"/api/v1/acts/"+actidd,
         'contentType':'application/json',
         'data' : {},
         'dataType' : 'json',

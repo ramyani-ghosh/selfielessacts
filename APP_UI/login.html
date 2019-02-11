@@ -47,7 +47,7 @@
         hash.update(pword);
         var x = hash.hex();
         console.log(x);
-        $.post("http://localhost:3000/api/v1/users",{username:uname,password:x})
+        $.post(domainURL+"/api/v1/users",{username:uname,password:x})
         .done(function(data){
             console.log(data);
         });
@@ -57,7 +57,7 @@
         var username = $(".username-delete").val();
         console.log(username);
         $.ajax({
-            url: 'http://localhost:3000/api/v1/users/'+username,
+            url: domainURL+'/api/v1/users/'+username,
             method: 'DELETE',
             success: function(result) {
                 // Do something with the result
