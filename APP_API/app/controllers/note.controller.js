@@ -94,7 +94,6 @@ exports.commonCat = (req, res) => {
                 message: "Act content can not be empty"
             });
         }
-        // Create a new Act
         const cat = new Category({
             categoryName : req.body[0],
             count : 0,
@@ -104,7 +103,7 @@ exports.commonCat = (req, res) => {
                 //Act Created Successfully!
             });
         }).catch(err => {
-            res.status(405).send({
+            res.status(400).send({
                 // message: "ActId provided is not unique!"
             });
         });
@@ -260,8 +259,7 @@ exports.removeAct = (req,res) => {
         var categoryName = "";
         Act.find({actId:req.params.actId}).then(data => {
             categoryName = data[0]['category'];
-        });
-        Act.findOneAndDelete({actId:req.params.actId},function(err,callback){
+            Act.findOneAndDelete({actId:req.params.actId},function(err,callback){
             if(callback){
                 Category.updateOne({categoryName:categoryName},{$inc:{count:-1}}).then(response => {});
                 res.status(200).send({});
@@ -269,7 +267,9 @@ exports.removeAct = (req,res) => {
             else{
                 res.status(400).send({});
             }
+            });
         });
+        
 
         
     }

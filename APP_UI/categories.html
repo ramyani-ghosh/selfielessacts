@@ -128,7 +128,9 @@ function up1(t){
         'contentType':'application/json',
         'data' : {},
         'dataType' : 'json',
-      });
+      }).done(function(data){
+      location.reload();
+    });
   }
 
 
