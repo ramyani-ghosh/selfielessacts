@@ -300,13 +300,6 @@ exports.uploadAct = (req,res) => {
         const success = {};
         // Save Act in the database
         console.log(act.category);
-        Category.updateOne({categoryName:act.category},{$inc:{count:1}}).then(response => {
-            if(response['n'] == 0){
-                res.status(400).send({
-                    message: "category doesn't exist"
-                });
-            }
-        });
         User.find({username:act.username}).then(data => {
             if(data.length == 0){
                 res.status(400).send({
@@ -327,6 +320,13 @@ exports.uploadAct = (req,res) => {
         }
 
         act.save().then(data => {
+            Category.updateOne({categoryName:act.category},{$inc:{count:1}}).then(response => {
+            if(response['n'] == 0){
+                res.status(400).send({
+                    message: "category doesn't exist"
+                });
+            }
+            });
             res.status(201).send({
                 //Act Created Successfully!
             });

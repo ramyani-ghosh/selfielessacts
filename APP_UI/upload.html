@@ -60,7 +60,7 @@
 <script>
     $(".form-popup").ready(function(){
         console.log("load");
-        $.get("http://localhost:3000/api/v1/categories")
+        $.get(domainURL + "/api/v1/categories")
          .done(function(data){
              console.log("GET");
              console.log(data);
@@ -119,10 +119,11 @@
         };
 
 
-        $.post("http://localhost:3000/api/v1/acts",requestJson)
+        $.post(domainURL + "/api/v1/acts",requestJson)
          .done(function(data){
-             console.log("POST DATA");
-             console.log(data);
+             // console.log("POST DATA");
+             // console.log(data);
+             location.reload();
          });
     });
 
