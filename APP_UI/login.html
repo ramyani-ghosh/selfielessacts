@@ -42,7 +42,7 @@
         var pword = $(".password-create").val();
         console.log(uname);
         console.log(pword);
-        sha1(pword);
+        Sha1(pword);
         var hash = sha1.create();
         hash.update(pword);
         var x = hash.hex();
