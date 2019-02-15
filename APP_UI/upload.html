@@ -55,23 +55,9 @@
 </center>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="node_modules/image-to-base64/image-to-base64.min.js"></script>
-
 <script src="config/url.js"></script>
-<script>
-    $(".btn").click(function(){
-        image2base64("images/charityfood.jpg")
-    .then(
-        (response) => {
-            console.log(response); //iVBORw0KGgoAAAANSwCAIA...
-        }
-    )
-    .catch(
-        (error) => {
-            console.log(error); //Exepection error....
-        }
-    )
-    });
 
+<script>
     $(".form-popup").ready(function(){
         console.log("load");
         $.get(domainURL + "/api/v1/categories")
@@ -151,7 +137,6 @@
   //
   // })
   //   });
->>>>>>> 733ab616a2f5b07df90d073bc5586b2c0990332a
 </script>
 
 </body>
