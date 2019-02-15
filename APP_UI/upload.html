@@ -116,7 +116,7 @@
             timestamp:mydate,
             imgB64:srcData.split(",")[1],
             username:$(".username").val(),
-        window.location.href = "index.html";
+
         };
 
 
@@ -126,6 +126,8 @@
              // console.log(data);
              location.reload();
          });
+
+         window.location.href = "index.html";
     });
 
     //  $.post("http://localhost:3000/api/v1/acts",)
