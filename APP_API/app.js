@@ -1,13 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-var cors = require('cors');
+
 // create express app
 const app = express();
-
-var corsOptions = {
-  origin: 'http://localhost',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
