@@ -9,7 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
+=======
     "base64-img": "^1.0.4",
+>>>>>>> 733ab616a2f5b07df90d073bc5586b2c0990332a
     "image-to-base64": "^2.0.1",
     "js-sha1": "^0.6.0"
   },
