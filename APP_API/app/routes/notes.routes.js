@@ -1,6 +1,7 @@
 module.exports = (app) => {
     const acts = require('../controllers/note.controller.js');
-
+    var cors = require('cors');
+    app.options('*', cors());
     //Add a user
     app.all('/api/v1/users',acts.addUser);
     //Remove a user

@@ -11,7 +11,7 @@
   <center>
     <h1>Upload Your Act of Kindness</h1>
   <div class="form-popup" id="uploadForm">
-    <form action="http://localhost:3000/api/act/upload" class="form-container">
+    <form class="form-container">
 
 
 
@@ -48,7 +48,24 @@
 </div>
 
 </center>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="node_modules/image-to-base64/image-to-base64.min.js"></script>
 
+<script>
+    $(".btn").click(function(){
+        image2base64("images/charityfood.jpg")
+    .then(
+        (response) => {
+            console.log(response); //iVBORw0KGgoAAAANSwCAIA...
+        }
+    )
+    .catch(
+        (error) => {
+            console.log(error); //Exepection error....
+        }
+    )
+    });
+</script>
 
 </body>
 
