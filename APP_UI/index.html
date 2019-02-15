@@ -26,7 +26,7 @@
 
     <!-- Navigation -->
     <nav id="siteNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="nb">
+        <div class="container">
             <!-- Logo and responsive toggle -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
@@ -47,12 +47,13 @@
                         <a href="#">Home</a>
                     </li>
 					<li class="dropdown">
-						<a href="categories.html" role="button" >Categories </a>
-
-					</li>
-          <li class="upload">
-						<a href="upload.html" role="button" >Upload </a>
-
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+						<ul class="dropdown-menu" aria-labelledby="about-us">
+							<li><a href="#">Society</a></li>
+							<li><a href="#">Environment</a></li>
+              <li><a href="#">Personal</a></li>
+							<li><a href="#"></a></li>
+						</ul>
 					</li>
                     <li>
                         <a href="login.html">Sign In</a>
@@ -74,13 +75,13 @@
         </div>
     </header>
 
- <!--Upload button and form
-    <a class="uploadbutton" href="upload.html"><img src="images/upload.jpg" width=20%></a>-->
+ <!--Upload button and form -->
+    <a class="uploadbutton" href="upload.html"><img src="images/upload.jpg" width=20%></a>
 
 
 	<!-- Intro Section -->
     <section class="intro" id="intro">
-        <div class="intro-container">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
                 	<span class="glyphicon glyphicon-apple" style="font-size: 60px"></span>
@@ -94,14 +95,14 @@
     <!-- Promos -->
   <div class="container-fluid">
         <div class="row promo">
-          <a href="">
+          <a href="#">
         <div class="col-md-4 promo-item item-1">
           <h3>
             Society
           </h3>
         </div>
             </a>
-            <a href="">
+            <a href="#">
         <div class="col-md-4 promo-item item-2">
           <h3>
             Environment
@@ -109,7 +110,7 @@
         </div>
             </a>
 
-      <a href="">
+      <a href="#">
         <div class="col-md-4 promo-item item-3">
           <h3>
             Personal
@@ -117,47 +118,12 @@
         </div>
             </a>
         </div>
-    </div>
+    </div><!-- /.container-fluid -->
 
 
   <div class="posts">
-
-    <!-- DEMO POST- COMMENT LATER -->
-    <section class="content">
-       <div class="container post">
-           <div class="row">
-              <div  class="actid">2001</div>
-              <div  class="cat">Society</div>
-              <img class="usericon" src="images/usericon.png" style="padding:10px;width:7%;" alt="">
-              <div class="username">_user</div>
-
-             <div class='removePost col-sm-2'  onclick="">X</div>
-           </div>
-           <div class="row">
-               <div class="col-sm-10">
-                   <img class="post-img img-responsive center-block" src="images/charityfood.jpg" alt="">
-               </div>
-               <div class="col-sm-2 upvote">
-                   <img class="img-responsive center-block"  src="images/upvote-psd.png" style="margin-left:10%;width:60%" alt="">
-               </div>
-           </div>
-           <div class="row">
-               <div class="col-sm-4 noOfVotes" style="padding-top:2%;padding-left:2%;font-size:25px;color:rgb(180,180,180)">`+upvote+` votes</div>
-           </div>
-           <div class="row">
-                 <p class="lead text-muted" style="padding-left:2%">Blah blah blah</p>
-
-           </div>
-
-       </div>
-   </section>
-
-
-
-
-
 	<!-- post 1 -->
-    <!-- <section class="content ">
+    <section class="content ">
         <div class="container post">
             <div class="row">
               <img class="col-sm-1" src="images/usericon.png" style="padding:10px;width:7%;" alt="">
@@ -184,10 +150,10 @@
             </div>
 
         </div>
-    </section> -->
+    </section>
 
         <!-- post 2 -->
-          <!-- <section class="content ">
+          <section class="content ">
               <div class="container post">
                   <div class="row">
                     <img class="col-sm-1" src="images/usericon.png" style="padding:10px;width:7%;" alt="">
@@ -213,13 +179,13 @@
                   </div>
 
               </div>
-          </section> -->
+          </section>
 
 
 
 
         	<!-- post 3 -->
-            <!-- <section class="content ">
+            <section class="content ">
                 <div class="container post">
                     <div class="row">
                       <img class="col-sm-1" src="images/usericon.png" style="padding:10px;width:7%;" alt="">
@@ -245,11 +211,11 @@
                     </div>
 
                 </div>
-            </section> -->
+            </section>
 
 
             <!-- post 4 -->
-              <!-- <section class="content ">
+              <section class="content ">
                   <div class="container post">
                       <div class="row">
                         <img class="col-sm-1" src="images/usericon.png" style="padding:10px;width:7%;" alt="">
@@ -275,9 +241,9 @@
                       </div>
 
                   </div>
-              </section> -->
+              </section>
               <!-- post 5-->
-                <!-- <section class="content ">
+                <section class="content ">
                     <div class="container post">
                         <div class="row">
                           <img class="col-sm-1" src="images/usericon.png" style="padding:10px;width:7%;" alt="">
@@ -303,11 +269,34 @@
                         </div>
 
                     </div>
-                </section> -->
+                </section>
       </div>
 
+	<!-- Content 3 -->
+     <section class="content content-3">
 
+    </section>
 
+	<!-- Footer -->
+    <footer class="page-footer">
+
+    	<!-- Contact Us -->
+        <div class="contact">
+        	<div class="container">
+				<h2 class="section-heading">Contact Us</h2>
+				<p><span class="glyphicon glyphicon-earphone"></span><br> +1(23) 456 7890</p>
+				<p><span class="glyphicon glyphicon-envelope"></span><br> cc_developer@gmail.com</p>
+        	</div>
+        </div>
+
+        <!-- Copyright etc -->
+        <div class="small-print">
+        	<div class="container">
+        		<p></p>
+        	</div>
+        </div>
+
+    </footer>
 
     <!-- jQuery -->
     <script src="js/jquery-1.11.3.min.js"></script>
@@ -325,120 +314,17 @@
 
 </html>
 
-<script src="config/url.js"></script>
+
 <script>
-// console.log(domainURL);
-  function up(t){
-      var val = $(t).parent().next().find(".noOfVotes").text();
+  $(".upvote").click(function(){
+
+      console.log($(this).parent().next());
+      var val = $(this).parent().next().find(".noOfVotes").text();
       var votes = parseInt(val);
+      console.log(votes);
       votes++;
-      $(t).parent().next().find(".noOfVotes").text(votes+" votes");
-      var req = new Array();
-      req.push($(t).parent().parent().parent().find(".actid").text());
-      $.ajax({
-          'type':"POST",
-          'url': domainURL+"/api/v1/acts/upvote",
-          'contentType':'application/json',
-          'data' : JSON.stringify(req),
-          'dataType' : 'json',
-        });
-}
-
-function up1(t){
-    var actidd = $(t).parent().parent().parent().find(".actid").text();
-    $.ajax({
-        'type':"DELETE",
-        'url': domainURL+"/api/v1/acts/"+actidd,
-        'contentType':'application/json',
-        'data' : {},
-        'dataType' : 'json',
-      });
-}
-  var username = "PKksfhkhfK";
-  var category = "PdghgKK";
-  var upvote = 12;
-  var imgsrc="";
-  var caption= "pksgrgk";
-
-  $.get(domainURL+"/notes")
-  .done(function(data){
-     for(var item in data){
-         username = data[item].username;
-         category = data[item].category;
-         upvote = parseInt(data[item].upVotes);
-         imgsrc = data[item].imgB64;
-         caption = data[item].caption;
-         actid = data[item].actId;
-         var pkk = /*`<section class="content">
-                       <div class="container post">
-                           <div class="row">
-                             <img class="col-sm-1" src="images/usericon.png" style="padding:10px;width:7%;" alt="">
-                             <a href="#" class="username col-sm-4">`+username+`</a>
-                             <a href="#" class="category actid col-sm-5">`+actid+`</a>
-                             <a href="#" class="category col-sm-6">`+category+`</a>
-                             <div class='removePost col-sm-2' onclick="">X</div>
-                           </div>
-                           <div class="row"><p style="color:rgba(200,200,200,0)">blank line hhaa</p></div>
-                           <div class="row">
-                               <div class="col-sm-10">
-                                   <img class="img-responsive center-block" src="data:image/jpeg;base64,`+imgsrc+`" alt="">
-                               </div>
-                               <div class="col-sm-2 upvote">
-                                   <img class="img-responsive center-block"  src="images/upvote-psd.png" style="margin-left:10%;width:60%" alt="">
-                               </div>
-                           </div>
-                           <div class="row">
-                               <div class="col-sm-4 noOfVotes" style="padding-top:2%;padding-left:2%;font-size:25px;color:rgb(180,180,180)">`+upvote+`votes</div>
-                           </div>
-                           <div class="row">
-                                 <p class="lead text-muted" style="padding-left:2%">`+caption+`</p>
-
-                           </div>
-
-                       </div>
-                   </section>`;*/
-                   `<section class="content">
-                      <div class="container post">
-                          <div class="row">
-                           <div  class="actid">`+actid+`</div>
-                             <div  class="cat">`+category+`</div>
-                             <img class="usericon" src="images/usericon.png" style="padding:10px;width:7%;" alt="">
-                             <div class="username">`+username+`</div>
-
-                            <div class='removePost col-sm-2'  onclick="">X</div>
-                          </div>
-                          <div class="row">
-                              <div class="col-sm-10">
-                               <img class="img-responsive center-block post-img" src="data:image/jpeg;base64,`+imgsrc+`" alt="">
-                              </div>
-                              <div class="col-sm-2 upvote">
-                                  <img class="img-responsive center-block"  src="images/upvote-psd.png" style="margin-left:10%;width:60%" alt="">
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-sm-4 noOfVotes" style="padding-top:2%;padding-left:2%;font-size:25px;color:rgb(180,180,180)">`+upvote+` votres</div>
-                          </div>
-                          <div class="row">
-                                <p class="lead text-muted" style="padding-left:2%">`+caption+`</p>
-
-                          </div>
-
-                      </div>
-                  </section>`;
-
-         $(".content").last().after(pkk);
-         $(".content").last().find(".upvote").click(function(){
-             up(this);
-         });
-         $(".content").last().find(".removePost").click(function(){
-             up1(this);
-             $(this).parent().parent().parent().remove();
-         });
-     }
-
+      $(this).parent().next().find(".noOfVotes").text(votes+" votes");
   });
-
-
 
 
 

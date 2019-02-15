@@ -16,37 +16,32 @@
 
 
       <label for="caption"><b>Caption</b></label><br>
-      <input type="text" placeholder="Enter caption for your post" name="caption" class="caption" required>
+      <input type="text" placeholder="Enter caption for your post" name="caption" required>
       <br><br>
 
       <!-- Decide how to uplaod pictures:  -->
       <label for="imgurl"><b>Upload Image</b></label><br>
-      <input type="file" name="pic" class="picture" accept="image/*" style="width:200px;cursor:pointer;"/>
+      <input type="text" placeholder="Enter URL of image" name="imgurl" style="width:50%;" required>
+      <button type="" style="width:10%;margin-top:0" class="btn">Upload</button>
       <br><br>
 
       <label for="desc"><b>ACT ID</b></label><br>
-      <input type="text" placeholder="Enter act ID" name="actid" class="actId" required>
-
-      <br><br>
-      <br><br>
-
-      <label for="desc"><b>USERNAME</b></label><br>
-      <input type="text" placeholder="Enter Username" name="username" class="username" required>
+      <input type="text" placeholder="Enter act ID" name="actid" required>
 
       <br><br>
       <label for="category"><b>Category</b></label>
-      <select class="category" name="category">
-        <!-- <option value="Society">Society</option>
-        <option value="Environment">Environment</option>
-        <option value="ersonal">Personal</option> -->
+      <select class="category" >
+        <option value="society">Society</option>
+        <option value="environment">Environment</option>
+        <option value="personal">Personal</option>
       </select>
-      <!-- <label class="newcategory" >or <a ><b> Add New Category</b></a></label> -->
+      <label class="newcategory" >or <a ><b> Add New Category</b></a></label>
 
       <br><br>
 
 
 
-      <button class="btn btn-submit">Submit</button>
+      <button type="submit" class="btn">Submit</button>
       <a href="index.html"><button type="button" class="btn cancel" >Cancel</button></a>
     </form>
   </div>
@@ -137,6 +132,7 @@
   //
   // })
   //   });
+
 </script>
 
 </body>

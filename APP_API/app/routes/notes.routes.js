@@ -1,6 +1,5 @@
 module.exports = (app) => {
     const acts = require('../controllers/note.controller.js');
-    
     var cors = require('cors');
     app.options('*', cors());
     //Add a user
@@ -11,10 +10,12 @@ module.exports = (app) => {
     app.all('/api/v1/categories',acts.commonCat);
     // Remove a cat
     app.all('/api/v1/categories/:categoryName',acts.removeCat);
-    // List acts for a given Category or in Range
+    // List acts for a given Category
     app.all('/api/v1/categories/:categoryName/acts',acts.listCat);
     // List number of acts for a given category
     app.all('/api/v1/categories/:categoryName/acts/size',acts.listCatCount);
+    // List Acts for a given category in given range
+    app.all('/api/v1/categories/:categoryName/acts',acts.getCountInRange);
     // Upvote an act
     app.all('/api/v1/acts/upvote',acts.upvoteAct);
     // Remove an act
