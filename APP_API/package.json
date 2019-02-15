@@ -10,6 +10,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
+    "date-and-time": "^0.6.3",
     "express": "^4.16.4",
     "image-to-base64": "^2.0.1",
     "is-base64": "^0.1.0",

@@ -1,5 +1,26 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+
+.home{
+  color: yellowgreen  ;
+  z-index: 10;
+  text-decoration: none;
+  font-size: 120%;
+}
+.home-btn{
+  cursor: pointer;
+  background-color: white;
+  position:absolute;
+  right:2%;
+  top:2%;
+  padding: 1%;
+  padding-left:  2%;
+  padding-right: 2%;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);;
+
+}
+
+
 .login-page {
   width: 360px;
   padding: 8% 0 0;
